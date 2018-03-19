@@ -22,11 +22,18 @@
         "assets/plugins/bootstrap/css/bootstrap.min.css",
         "assets/plugins/font-awesome/css/font-awesome.min.css",
 
+        
         "assets/plugins/revolution/css/navigation.css",
         "assets/css/style.css",
         "assets/css/default.css"
       ],
-      "scripts": [],
+      "scripts": [
+        
+        "assets/plugins/jquery/jquery-2.2.4.min.js",
+        "assets/plugins/jquery-ui/jquery-ui.min.js",
+        "assets/plugins/bootstrap/js/bootstrap.min.js",
+        "assets/js/custom.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
