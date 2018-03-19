@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ag"
+    "name": "AG TOURS"
   },
   "apps": [
     {
@@ -19,7 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "assets/plugins/bootstrap/css/bootstrap.min.css",
+        "assets/plugins/font-awesome/css/font-awesome.min.css",
+
+        "assets/plugins/revolution/css/navigation.css",
+        "assets/css/style.css",
+        "assets/css/default.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
