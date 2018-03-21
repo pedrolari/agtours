@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
 
+
+
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -24,6 +26,8 @@ import { ToursComponent } from './tours/tours.component';
 import { HotelesComponent } from './hoteles/hoteles.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+
+
 
 
 @NgModule({
