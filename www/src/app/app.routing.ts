@@ -14,7 +14,7 @@ const routes: Routes =[
     { path: 'hoteles',       	component: HotelesComponent },
 	{ path: 'destinos',         component: DestinosComponent },
 	{ path: 'galeria',          component: GaleriaComponent },
-    { path: '', 				redirectTo: 'inicio', pathMatch: 'full' }
+    // { path: '', 				redirectTo: 'inicio', pathMatch: 'full' }
 ];
 
 export const appRoutingProviders: any []=[];
