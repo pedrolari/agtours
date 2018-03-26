@@ -1,0 +1,57 @@
+
+<h4>LISTADO DE USUARIOS</h4>
+<table >
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th width="15%">NOMBRE</th>
+      <th width="15%">APELLIDOS</th>
+      <th width="15%">DIRECCION</th>
+      <th width="15%">TELEFONO</th>
+      <th width="15%">EMAIL</th>
+      <th width="15%">USUARIO</th>
+      <th width="15%">PASSWORD</th>
+      <th width="15%">ROL</th>
+      <th width="15%">CIUDAD</th>
+      <th width="15%">PAIS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listado">
+
+      <td align="center">
+        {{item.idcliente}}
+      </td>
+      <td align="center">
+        {{item.nom_cli}}
+      </td>
+      <td align="center">
+        {{item.apell__cli}}
+      </td>
+      <td align="center">
+        {{item.direc_cli}}
+      </td>
+      <td align="center">
+        {{item.tel_cli}}
+      </td>
+      <td align="center">
+        {{item.email_cli}}
+      </td>
+      <td align="center">
+        {{item.usuario}}
+      </td>
+      <td align="center">
+        {{item.password}}
+      </td>
+      <td align="center">
+        {{item.rol}}
+      </td>
+      <td align="center">
+        {{item.id_ciudad}}
+      </td>
+      <td align="center">
+        {{item.cp_cliente}}
+      </td>                   
+    </tr>
+  </tbody>
+</table>

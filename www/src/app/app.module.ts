@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
-
+import { UsuarioServiceService } from './servicios/usuario-service.service';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -26,8 +27,7 @@ import { ToursComponent } from './tours/tours.component';
 import { HotelesComponent } from './hoteles/hoteles.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
-
-
+import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
 
 
 @NgModule({
@@ -52,13 +52,15 @@ import { GaleriaComponent } from './galeria/galeria.component';
     ToursComponent,
     HotelesComponent,
     DestinosComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    ListadoUsuariosComponent
   ],
   imports: [
     BrowserModule,
-    routing
+    HttpModule,
+    routing 
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, UsuarioServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
