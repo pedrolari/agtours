@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioServiceService } from "../servicios/usuario-service.service"; //Importamos nuestro servicio
-import "rxjs/add/operator/map"; //Libreria para mapear los resultados a JSON
+import { Http, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-listado-usuarios',
@@ -9,18 +10,18 @@ import "rxjs/add/operator/map"; //Libreria para mapear los resultados a JSON
 })
 export class ListadoUsuariosComponent implements OnInit {
 
-	filterargs;
-  listado; //Inicializamos la variable en la cual agregaremos nuestro listado de registros
-  items;
-
-  constructor( private crudUsuario:UsuarioServiceService ) { }
-
-  ngOnInit() {
-  	this.crudUsuario.listar()
-    .map((response) => response.json())
-    .subscribe((data) => {                
-      this.listado = data;
-    });
-  }
-
+    private usuarios;
+ 
+    constructor( private http: HttpClient ){
+    }
+ 
+    ngOnInit(){
+      this.getData();
+    }
+ configUrl = 'http://abenitoc.com/agencia/php/prueba.php';
+    getData(){
+      return this.http.get(this.configUrl);
+        // this.http.get('http://abenitoc.com/agencia/php/prueba.php')
+        //     .subscribe(res => this.usuarios = res.json());
+    }
 }
