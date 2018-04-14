@@ -3,8 +3,8 @@
 <table >
   <thead>
     <tr>
-      <th>ID</th>
-      <th width="15%">NOMBRE</th>
+      <th width="150">ID</th>
+      <th width="150">NOMBRE</th>
       <th width="15%">APELLIDOS</th>
       <th width="15%">DIRECCION</th>
       <th width="15%">TELEFONO</th>
@@ -17,40 +17,39 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of usuarios">
-
-      <td align="center">
-        <!-- {{user.idcliente}} -->
+    <tr *ngFor="let user of usuarios.Clientes">
+      <td width="150" align="center">
+        {{user.idcliente}}
       </td>
-      <td align="center">
+      <td width="150" align="center">
         {{user.nom_cli}}
       </td>
       <td align="center">
-        <!-- {{user.apell__cli}} -->
+        {{user.apell__cli}}
       </td>
       <td align="center">
-        <!-- {{user.direc_cli}} -->
+        {{user.direc_cli}}
       </td>
       <td align="center">
-        <!-- {{user.tel_cli}} -->
+        {{user.tel_cli}}
       </td>
       <td align="center">
         {{user.email_cli}}
       </td>
       <td align="center">
-        <!-- {{user.usuario}} -->
+        {{user.usuario}}
       </td>
       <td align="center">
         {{user.password}}
       </td>
       <td align="center">
-        <!-- {{user.rol}} -->
+        {{user.rol}}
       </td>
       <td align="center">
-        <!-- {{user.id_ciudad}} -->
+        {{user.id_ciudad}}
       </td>
       <td align="center">
-        <!-- {{user.cp_cliente}} -->
+        {{user.cp_cliente}}
       </td>                   
     </tr>
   </tbody>

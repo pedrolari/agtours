@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { UsuariosService } from "../servicios/usuarios.service";
+import "rxjs/add/operator/map"; 
 
 @Component({
   selector: 'app-listado-usuarios',
@@ -9,19 +9,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./listado-usuarios.component.css']
 })
 export class ListadoUsuariosComponent implements OnInit {
-
-    private usuarios;
  
-    constructor( private http: HttpClient ){
+    usuarios;
+
+    constructor( private crudUsusarios: UsuariosService ) {
     }
  
     ngOnInit(){
-      this.getData();
-    }
- configUrl = 'http://abenitoc.com/agencia/php/prueba.php';
-    getData(){
-      return this.http.get(this.configUrl);
-        // this.http.get('http://abenitoc.com/agencia/php/prueba.php')
-        //     .subscribe(res => this.usuarios = res.json());
+      this.crudUsusarios.listado()
+      .map((response) => response.json())
+      .subscribe(( data ) => {
+        this.usuarios = data;
+      })
+
     }
 }

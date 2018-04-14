@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { UsuariosService } from "./servicios/usuarios.service";
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -60,7 +61,7 @@ import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.co
     FormsModule,
     routing 
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

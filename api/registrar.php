@@ -1,9 +1,13 @@
 <?php
-header ("Access-Control-Allow-Origin: *");
-header ("Access-Control-Expose-Headers: Content-Length, X-JSON");
-header ("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
-header ("Access-Control-Allow-Headers: *");
-header ("Access-Control-Allow-Credentials: true");
+// header ("Access-Control-Allow-Origin: *");
+// header ("Access-Control-Expose-Headers: Content-Length, X-JSON");
+// header ("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+// header ("Access-Control-Allow-Headers: *");
+// header ("Access-Control-Allow-Credentials: true");
+
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+    header("Content-Type: application/json");
 
     require_once 'include/DB_Functions.php';
     $db = new DB_Functions();
@@ -11,11 +15,13 @@ header ("Access-Control-Allow-Credentials: true");
     // json response array
     $response = array("error" => FALSE);
      
-    if (isset($_POST['emailreg']) && isset($_POST['passwordreg'])) {
+    if (isset($_POST['email_cli']) && isset($_POST['password']) && isset($_POST['id_ciudad']) && isset($_POST['rol'])) {
      
         // receiving the post params
-        $email = $_POST['emailreg'];
-        $password = $_POST['passwordreg'];
+        $email = $_POST['email_cli'];
+        $password = $_POST['password'];
+        $ciudad = $_POST['id_ciudad'];
+        $rol = $_POST['rol'];
      
         // check if user is already existed with the same email
         if ($db->isUserExisted($email)) {
@@ -25,13 +31,15 @@ header ("Access-Control-Allow-Credentials: true");
             echo json_encode($response);
         } else {
             // create a new user
-            $user = $db->storeUser($email, $password);
+            $user = $db->storeUser($email, $password, $ciudad, $rol);
             if ($user) {
                 // user stored successfully
                 $response["error"] = FALSE;
                 // $response["uid"] = $user["unique_id"];
-                $response["user"]["email"] = $user["email"];
+                $response["user"]["email_cli"] = $user["email_cli"];
                 $response["user"]["password"] = $user["password"];
+                $response["user"]["id_ciudad"] = $user["id_ciudad"];
+                $response["user"]["rol"] = $user["rol"];
                 echo json_encode($response);
             } else {
                 // user failed to store

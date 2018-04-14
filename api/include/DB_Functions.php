@@ -81,14 +81,14 @@
          * Storing new user
          * returns user details
          */
-        public function storeUser($email, $password) {
+        public function storeUser($email, $password, $ciudad, $rol) {
             // $uuid = uniqid('', true);
             // $hash = $this->hashSSHA($password);
             // $encrypted_password = $hash["encrypted"]; // encrypted password
             // $salt = $hash["salt"]; // salt
      
-            $stmt = $this->conn->prepare("INSERT INTO clientes(email_cli, password) VALUES(?, ?)");
-            $stmt->bind_param("ss", $email, $password);
+            $stmt = $this->conn->prepare("INSERT INTO clientes(email_cli, password, id_ciudad, rol) VALUES(?, ?, ?, ?)");
+            $stmt->bind_param("ssii", $email, $password, $ciudad, $rol);
             $result = $stmt->execute();
             $stmt->close();
      
