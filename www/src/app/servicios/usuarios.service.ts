@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Usuario } from "../modelos/usuario";
 
 @Injectable()
 export class UsuariosService {
@@ -10,26 +13,13 @@ export class UsuariosService {
     return this.http.get('http://www.abenitoc.com/agencia/php/mostrarClientes.php');
   }
 	
-	guardarProducto(producto: Producto){
-		let json = JSON.stringify(producto);
+	altaUsuario(usuario: Usuario){
+		let json = JSON.stringify(usuario);
 		let params = 'json='+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.url+'productos', params, {headers: headers})
+		return this.http.post('http://www.abenitoc.com/agencia/php/registrar.php', params, {headers: headers})
 						 .map(res => res.json());
 	}
-
-  // detallar(id: number) {
-  //   return this.http.get('' + id);
-  // }
-  // guardar(item: Object) {
-  //   return this.http.post('', item);
-  // } 
-  // modificar(item: Object) {
-  //   return this.http.post('', item);
-  // }
-  // eliminar(id: number) {
-  //   throw new Error("Metoido no implementado.");
-  // }
 
 }
