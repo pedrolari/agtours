@@ -4,10 +4,14 @@
 	// Cargamos la libreria de bcrypt
 	var bcrypt = require('bcrypt-nodejs');
 
-
 // MODELOS
 	//Cargamos el modelo user para crear nuevos usuarios
 	var User = require('../models/user');
+
+// SERVICIOS
+	// Servicio JWT
+	var jwt = require('../services/jwt.js');
+
 
 // ACCIONES
 
@@ -39,26 +43,43 @@
 			user.rol = params.rol;
 			// user.ciudad = params.ciudad;
 			user.cp = params.cp;
-			//encriptamos la contraseña
-			bcrypt.hash(params.password, null, null, function(err, hash){
-				user.password = hash;
 
-				//guardamos el usuario en bbdd
-				user.save((err, userStored) => {
-					console.log(err);
-					if(err){
-						res.status(500).send({ message: 'Error al guardar el usuario' });
-					} else {
-						if(!userStored){
-							res.status(404).send({ message: 'No se ha registrado el usuario' });
-						} else {
-							res.status(200).send({ user: userStored });
-						}
+			// Buscamos si hay ya un usuario con ese email
+
+			User.findOne({email: user.email.toLowerCase()}, (err, issetUser) => {
+				if(err){
+					res.status(500).send({ message: 'Error al comprobar el usuario' });
+				}else{
+					// si no ha encontrado ningun usuario es que se puede dar de alta
+					if(!issetUser){
+						//encriptamos la contraseña
+						bcrypt.hash(params.password, null, null, function(err, hash){
+							user.password = hash;
+
+							//guardamos el usuario en bbdd
+							user.save((err, userStored) => {
+								console.log(err);
+								if(err){
+									res.status(500).send({ message: 'Error al guardar el usuario' });
+								} else {
+									if(!userStored){
+										res.status(404).send({ message: 'No se ha registrado el usuario' });
+									} else {
+										res.status(200).send({ user: userStored });
+									}
+								}
+
+							});
+
+						});
+					}else{
+						res.status(200).send({
+							message: 'El usuario no puede registrarse por que ya existe ese email'
+						});
 					}
-
-				});
-
+				}
 			});
+
 		} else {
 			res.status(200).send({ message: 'Introduce los datos correctamente para poder registrar al usuario' });
 		}
@@ -68,9 +89,54 @@
 		// });
 	}
 
+	// Login de Usuarios
+	function login(req, res){
+		var params = req.body;
+		var email = params.email;
+		var password = params.password;
+
+		// buscamos en la coleccion Users un documento cuyo email sea igual que el que llega por post
+		User.findOne({email: email.toLowerCase()}, (err, user) => {
+			if(err){
+				res.status(500).send({ message: 'Error al realizar el login' });
+			}else{
+				// si ha encontrado usuario es que se puede loguear
+				if(user){
+					//comprobamos si el password que recibimos es el mismo de la bbdd encriptado
+					bcrypt.compare(password, user.password, (err, check)=>{
+						if(check){
+							//Comprobasmos y generamos el token
+							if(params.gettoken){
+								// devolvemos el token
+								res.status(200).send({
+									token: jwt.createToken(user)
+								});
+
+							} else {
+								res.status(200).send({user});
+							}
+							
+						} else {
+							res.status(404).send({
+								message: 'El usuario no ha podido loguearse correctamente'
+							});
+						}
+					});
+				}else{
+					res.status(404).send({
+						message: 'El usuario no ha podido loguearse'
+					});
+				}
+			}
+		});
+
+
+	}
+
 // Exportamos todos los metodos seguidos por comas, para poder utilizarlos fuera
 // Esto devolvera un objeto con todos los metodos.
 module.exports = {
 	pruebas,
-	saveUser
+	saveUser,
+	login
 }

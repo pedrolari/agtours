@@ -12,6 +12,7 @@ var api = express.Router();
 // Creamos nuestras rutas. Primer parametro la ruta y el segundo, el metodo del controlador que queramos usar
 api.get('/pruebas-del-controlador', UserController.pruebas);
 api.post('/registro', UserController.saveUser);
+api.post('/login', UserController.login);
 
 // Exportamos el modulo
 module.exports = api;
