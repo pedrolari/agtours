@@ -1,4 +1,7 @@
+
+
 <!-- Signup Modal -->
+
 <div class="modal fade signupLoging" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content modalContentCustom">
@@ -7,39 +10,38 @@
         <h4 class="modal-title" id="myModalLabel">Crea tu Cuenta</h4>
       </div>
       <div class="modal-body">
-        <form #formProducto="ngForm" (ngSubmit)="guardarUsuario();" id="form-producto">
+        <form #registroForm1="ngForm" (ngSubmit)="guardarUsuario();" id="form-producto">
           <div class="form-group">
             
-            <input type="text" name="nom_cli" #nom_cli="ngModel" [(ngModel)]="usuario.nom_cli" class="form-control bg-ash" placeholder="Nombre" required>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" class="form-control bg-ash" placeholder="Nombre" required>
           </div>
           <div class="form-group">
             
-            <input type="text" name="apell_cli" #apell_cli="ngModel" [(ngModel)]="usuario.apell_cli" class="form-control bg-ash" placeholder="Apellidos" required>
+            <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" class="form-control bg-ash" placeholder="Apellidos" required>
           </div>
           <div class="form-group">
             
-            <input type="text" name="direc_cli" #direc_cli="ngModel" [(ngModel)]="usuario.direc_cli" class="form-control bg-ash" placeholder="Direccion" required>
+            <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="usuario.direccion" class="form-control bg-ash" placeholder="Direccion" required>
           </div>
           <div class="form-group">
             
-            <input type="text" name="cp_cliente" #cp_cliente="ngModel" [(ngModel)]="usuario.cp_cliente" class="form-control bg-ash" placeholder="Codigo Postal" required>
+            <input type="text" name="cp" #cp="ngModel" [(ngModel)]="usuario.cp" class="form-control bg-ash" placeholder="Codigo Postal" required>
           </div>        
 
           <div class="form-group">
-            <input type="text" name="tel_cli" #tel_cli="ngModel" [(ngModel)]="usuario.tel_cli" class="form-control bg-ash" placeholder="Telefono" required>
+            <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" class="form-control bg-ash" placeholder="Telefono" required>
           </div>
           <div class="form-group">
-            <input type="email" name="email_cli" #email_cli="ngModel" [(ngModel)]="usuario.email_cli" class="form-control bg-ash" placeholder="Email" required>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" class="form-control bg-ash" placeholder="Email" required>
           </div>
           <div class="form-group">
-            <input type="text"  name="usuario" #usuario="ngModel" [(ngModel)]="usuario.usuario" class="form-control bg-ash" placeholder="Usuario" required>
+            <input type="text"  name="user" #user="ngModel" [(ngModel)]="usuario.user" class="form-control bg-ash" placeholder="Usuario" required>
           </div>          
           <div class="form-group">
             <input type="password" name="password" #password="ngModel" [(ngModel)]="usuario.password" class="form-control bg-ash" placeholder="Password" required>
           </div>
           <br />
-          <input type="submit" value="Registro" [disabled]="!formProducto.form.valid" class="btn btn-default">
-          <!-- <button type="submit" class="btn btn-default">Registro</button> -->
+          <input type="submit" value="Registro" [disabled]="!registroForm1.form.valid" class="btn btn-default">
         </form>
 
   

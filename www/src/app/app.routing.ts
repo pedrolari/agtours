@@ -9,6 +9,8 @@ import { HotelesComponent } from './hoteles/hoteles.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
+import { RegistroUltimoComponent } from './registro/registroultimo.component';
+
 
 const routes: Routes =[
     { path: 'inicio',           component: InicioComponent },
@@ -17,6 +19,7 @@ const routes: Routes =[
 	{ path: 'destinos',         component: DestinosComponent },
 	{ path: 'galeria',          component: GaleriaComponent },
 	{ path: 'usuarios',         component: ListadoUsuariosComponent },
+	{ path: 'registro',         component: RegistroUltimoComponent },
     // { path: '', 				redirectTo: 'inicio', pathMatch: 'full' }
 ];
 

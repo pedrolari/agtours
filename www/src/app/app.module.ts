@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosService } from "./servicios/usuarios.service";
 
@@ -28,6 +27,8 @@ import { HotelesComponent } from './hoteles/hoteles.component';
 import { DestinosComponent } from './destinos/destinos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
+import { RegistroUltimoComponent } from './registro/registroultimo.component';
+
 
 @NgModule({
   declarations: [
@@ -53,11 +54,11 @@ import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.co
     DestinosComponent,
     GaleriaComponent,
     ListadoUsuariosComponent,
+    RegistroUltimoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpModule,
     FormsModule,
     routing 
   ],

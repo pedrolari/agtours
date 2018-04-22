@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { UsuariosService } from "../servicios/usuarios.service";
-import "rxjs/add/operator/map"; 
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-listado-usuarios',
@@ -10,17 +9,16 @@ import "rxjs/add/operator/map";
 })
 export class ListadoUsuariosComponent implements OnInit {
  
-    usuarios;
+    public usuarios;
 
-    constructor( private crudUsusarios: UsuariosService ) {
+    constructor( private _usuariosService: UsuariosService ) {
     }
  
     ngOnInit(){
-      this.crudUsusarios.listado()
-      .map((response) => response.json())
-      .subscribe(( data ) => {
-        this.usuarios = data;
-      })
-
+      this._usuariosService.listado().subscribe(
+        data => { this.usuarios = data },
+        err => console.error(err),
+        () => console.log('Cargado correctamente')
+      );
     }
 }

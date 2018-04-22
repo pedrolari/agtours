@@ -1,10 +1,5 @@
 <?php
-     /// CORS
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 
-    header("Content-Type: application/json");
-    
     class DB_Functions {
      
         private $conn;
@@ -86,11 +81,11 @@
          * Storing new user
          * returns user details
          */
-        public function storeUser($nombre, $apellidos, $direccion, $telefono, $email, $usuario, $password, $ciudad, $rol, $cp) {
+        public function storeUser($nombre, $apellidos, $direccion, $telefono, $email, $user, $password, $ciudad, $rol, $cp) {
     
             $stmt = $this->conn->prepare("INSERT INTO clientes (nom_cli, apell_cli, direc_cli, tel_cli, email_cli, usuario, password, id_ciudad, rol, cp_cliente) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-            $stmt->bind_param("sssssssiii", $nombre, $apellidos, $direccion, $telefono, $email, $usuario, $password, $ciudad, $rol, $cp);
+            $stmt->bind_param("sssssssiii", $nombre, $apellidos, $direccion, $telefono, $email, $user, $password, $ciudad, $rol, $cp);
             $result = $stmt->execute();
             $stmt->close();
      
