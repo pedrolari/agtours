@@ -19,7 +19,8 @@
 	// Todas las funciones tienen dos parametros principales: req = request y res = response
 	function pruebas(req, res){
 		res.status(200).send({
-			message: 'Probando el controlador de usuarios y la accion pruebas'
+			message: 'Probando el controlador de usuarios y la accion pruebas', 
+			user: req.user
 		});
 	}
 
@@ -40,7 +41,7 @@
 			user.direccion = params.direccion;
 			user.telefono = params.telefono;
 			user.email = params.email;
-			user.rol = params.rol;
+			// user.rol = params.rol;
 			// user.ciudad = params.ciudad;
 			user.cp = params.cp;
 
@@ -129,8 +130,47 @@
 				}
 			}
 		});
+	}
 
+	// Actualizar Usuarios
+	function updateUser(req, res){
 
+		var userId = req.params.id;
+		var update = req.body;
+
+		// Si el id del usuario logueado es diferente a la id que me llega por URL
+		// le decimos que no tiene permiso para actualizar al usuario
+		if(userId != req.user.sub){
+			return res.status(500).send({
+				message: 'No tienes permiso para actualizar el usuario'
+			});
+		}
+
+		// En el caso de que el userid sea el id del usuario logueado
+		// Este metodo recibe el id del documento a actualizar, y un objeto con los datos a actualizar
+		// Con { new:true } hacemos que directamente nos devuelva el json con el nuevo objeto modificado
+		User.findByIdAndUpdate(userId, update, { new:true }, (err, userUpdated) => {
+			if(err){
+				res.status(500).send({
+					message: 'Error al actualizar el usuario'
+				});
+			} else {
+				if(!userUpdated){
+					res.status(404).send({
+						message: 'No se ha podido actualizar el usuario'
+					});
+				} else {
+					// en caso de que sea correcto devolvemos el json con los datos
+					res.status(200).send({
+						user: userUpdated
+					});
+				}
+			}
+		});
+
+		// res.status(200).send({
+		// 	message: 'Actualizar Usuario'
+		// });
 	}
 
 // Exportamos todos los metodos seguidos por comas, para poder utilizarlos fuera
@@ -138,5 +178,6 @@
 module.exports = {
 	pruebas,
 	saveUser,
-	login
+	login,
+	updateUser
 }
