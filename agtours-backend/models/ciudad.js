@@ -8,9 +8,9 @@ var Schema = mongoose.Schema;
 
 // Definimos el Schema de un documento de nuestra coleccion de usuarios
 var CiudadSchema = Schema({
-	idciudad: Number,
-	paises_codigo: { type: Schema.ObjectId, ref: 'Pais' }
-	ciudad: String
+	idCiudades: Number,
+	Paises_Codigo: { type: Schema.ObjectId, ref: 'paises' }
+	Ciudad: String
 });
 
 // Exportamos el modulo

@@ -8,8 +8,8 @@ var Schema = mongoose.Schema;
 
 // Definimos el Schema de un documento de nuestra coleccion de usuarios
 var PaisSchema = Schema({
-	codigo: String,
-	pais: String
+	Codigo: String,
+	Pais: String
 });
 
 // Exportamos el modulo

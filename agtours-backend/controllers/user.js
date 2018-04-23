@@ -35,15 +35,15 @@
 
 		console.log(params);
 		//asignamos valores al objeto usuario si llegan los datos completos
-		if(params.password && params.nombre && params.apellidos && params.direccion && params.telefono && params.email && params.cp){
+		if(params.nombre && params.apellidos && params.direccion && params.cp && params.telefono && params.email && params.password){
 			user.nombre = params.nombre;
 			user.apellidos = params.apellidos;
 			user.direccion = params.direccion;
+			user.cp = params.cp;
 			user.telefono = params.telefono;
 			user.email = params.email;
-			// user.rol = params.rol;
-			// user.ciudad = params.ciudad;
-			user.cp = params.cp;
+			user.rol = '5ada1ad2784df72b580fce58';
+			user.ciudad = '5adb21d9784df745f8c65d04';
 
 			// Buscamos si hay ya un usuario con ese email
 

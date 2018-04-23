@@ -14,8 +14,8 @@ var UserSchema = Schema({
 	telefono: Number,
 	email: String,
 	password: String,
-	// rol: { type: Schema.ObjectId, ref: 'rol' },
-	// ciudad: { type: Schema.ObjectId, ref: 'ciudad' },
+	rol: { type: Schema.ObjectId, ref: 'roles' },
+	ciudad: { type: Schema.ObjectId, ref: 'ciudades' },
 	cp: Number
 });
 

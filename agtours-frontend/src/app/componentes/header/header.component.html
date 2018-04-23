@@ -1,0 +1,163 @@
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-default navbar-main lightHeader " role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+                    <span class="sr-only">
+                        Toggle navigation
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown singleDrop active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" routerLink ="/inicio">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="dropdown singleDrop ">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" routerLink ="/tours">
+                            Tours
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="">
+                                <a href="about-us.html">
+                                    Caribe
+                                </a>
+                            </li>
+                            <li class="dropdown dropdown-submenu ">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                                    Ofertas
+                                    <i aria-hidden="true" class="fa fa-chevron-right">
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu ">
+                                    <li class="">
+                                        <a href="gallery-grid.html">
+                                            Nueva York
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="gallery-masonry.html">
+                                            Bahia Principe
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="gallery-photo-slider.html">
+                                            Puerto Plata
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown singleDrop ">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" routerLink ="/hoteles">
+                            Hoteles
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="">
+                                <a href="hotels.html">
+                                    Hotels Sidebar Left
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="hotels.html">
+                                    Hotels Sidebar Right
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="hotels.html">
+                                    Hotels 3 Columns
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown singleDrop ">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" routerLink ="/destinos">
+                            Destinos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="">
+                                <a href="dashboard.html">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="booking.html">
+                                    Booking
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="profile.html">
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="setting.html">
+                                    Settings
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-target="#signup" data-toggle="modal" href="">
+                                    Signup
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-target="#login" data-toggle="modal" href="">
+                                    Login
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown singleDrop ">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" routerLink ="/galeria">
+                            Galeria
+                        </a>
+                    </li>
+                    <li class="dropdown singleDrop ">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button">
+                            Cuenta
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="">
+                                <a data-target="#signup" data-toggle="modal" href="">
+                                    Regístrate
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-target="#login" data-toggle="modal" href="">
+                                    Acceder
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="navbar-btn">
+                            <a class="btn btn-nav">
+                                Reserva Ya
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </nav>
+</header>
+
+<app-login></app-login>
+<app-registro></app-registro>
