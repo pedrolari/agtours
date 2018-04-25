@@ -3,53 +3,45 @@
 <table >
   <thead>
     <tr>
-      <th width="150">ID</th>
-      <th width="150">NOMBRE</th>
-      <th width="15%">APELLIDOS</th>
-      <th width="15%">DIRECCION</th>
-      <th width="15%">TELEFONO</th>
-      <th width="15%">EMAIL</th>
-      <th width="15%">USUARIO</th>
-      <th width="15%">PASSWORD</th>
-      <th width="15%">ROL</th>
-      <th width="15%">CIUDAD</th>
-      <th width="15%">PAIS</th>
+      <th align="center">NOMBRE</th>
+      <th align="center">APELLIDOS</th>
+      <th align="center">DIRECCION</th>
+      <th align="center">TELEFONO</th>
+      <th align="center">EMAIL</th>
+      <th align="center">PASSWORD</th>
+      <th align="center">ROL</th>
+      <th align="center">CIUDAD</th>
+      <th align="center">CP</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of usuarios.Clientes">
+    <tr *ngFor="let usuario of usuarios">     
+      <td align="center">
+        {{usuario.nombre}}
+      </td>
+      <td align="center">
+        {{usuario.apellidos}}
+      </td>
+      <td align="center">
+        {{usuario.direccion}}
+      </td>
+      <td align="center">
+        {{usuario.telefono}}
+      </td>
+      <td align="center">
+        {{usuario.email}}
+      </td>
       <td width="150" align="center">
-        {{user.idcliente}}
-      </td>
-      <td width="150" align="center">
-        {{user.nom_cli}}
+        {{usuario.password}}
       </td>
       <td align="center">
-        {{user.apell__cli}}
+        {{usuario.rol}}
       </td>
       <td align="center">
-        {{user.direc_cli}}
+        {{usuario.ciudad}}
       </td>
       <td align="center">
-        {{user.tel_cli}}
-      </td>
-      <td align="center">
-        {{user.email_cli}}
-      </td>
-      <td align="center">
-        {{user.usuario}}
-      </td>
-      <td align="center">
-        {{user.password}}
-      </td>
-      <td align="center">
-        {{user.rol}}
-      </td>
-      <td align="center">
-        {{user.id_ciudad}}
-      </td>
-      <td align="center">
-        {{user.cp_cliente}}
+        {{usuario.cp}}
       </td>                   
     </tr>
   </tbody>

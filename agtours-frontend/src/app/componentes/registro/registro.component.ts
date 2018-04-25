@@ -23,24 +23,10 @@ export class RegistroComponent implements OnInit {
 		this.usuario = new Usuario('', '', '', '', '', '', '', '');
 	}
 
-  ngOnInit() {
-  	console.log('Componente registro cargado!!!!!');
-  }
+	ngOnInit() {
+		console.log('Componente registro cargado!!!!!');
+	}
 
-  // guardarUsuario(usuario: Usuario) {
-  // 	console.log(this.usuario);
-  //   this._usuariosService.altaUsuario(this.usuario).subscribe(
-  //      data => {
-  //        // refresh the list
-  //        this.router.navigate(['/usuarios']);
-  //        return true;
-  //      },
-  //      error => {
-         // console.error("Error saving food!");
-  //        return Observable.throw(error);
-  //      }
-  //   );
-  // }
 	guardarUsuario(){
 		this._usuariosService.altaUsuario(this.usuario).subscribe(
 			response => {
@@ -58,5 +44,4 @@ export class RegistroComponent implements OnInit {
 			}
 		);
 	}
-
 }

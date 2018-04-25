@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 // Definimos el Schema de un documento de nuestra coleccion de usuarios
 var CiudadSchema = Schema({
 	idCiudades: Number,
-	Paises_Codigo: { type: Schema.ObjectId, ref: 'paises' }
+	Paises_Codigo: { type: Schema.ObjectId, ref: 'Pais' }
 	Ciudad: String
 });
 

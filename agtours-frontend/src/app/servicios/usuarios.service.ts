@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from "./global";
@@ -19,10 +19,9 @@ export class UsuariosService {
     return this._http.post(this.url+'registro', params, {headers: headers})
           .map(res => res.json());
   }
-
-
-  listado() {
-    return this._http.get(this.url+'listado');
+  
+  listadoUsuarios() {
+      return this._http.get(this.url+'usuarios').map(res => res.json());
   }
 	
 	// altaUsuario(usuario: Usuario) {

@@ -173,11 +173,58 @@
 		// });
 	}
 
+	// Listado de Usuarios
+	function getUsers(req, res){
+		User.find({}).populate({path: 'user'}).exec((err, users) => {
+			if(err){
+				res.status(500).send({
+					message: 'Error en la peticion'
+				});
+			} else {
+				if(!users){
+					res.status(404).send({
+						message: 'No hay usuario'
+					});
+				} else {
+					res.status(200).send({
+						users
+					});
+				}
+
+			}
+		});
+	}
+
+	// Listado de Usuarios
+	function getUser(req, res){
+		var userId = req.params.id;
+
+		User.findById(userId).populate({path: 'user'}).exec((err, users) => {
+			if(err){
+				res.status(500).send({
+					message: 'Error en la peticion'
+				});
+			} else {
+				if(!users){
+					res.status(404).send({
+						message: 'El usuario no existe'
+					});
+				} else {
+					res.status(200).send({
+						users
+					});
+				}
+
+			}			
+		});
+	}
 // Exportamos todos los metodos seguidos por comas, para poder utilizarlos fuera
 // Esto devolvera un objeto con todos los metodos.
 module.exports = {
 	pruebas,
 	saveUser,
 	login,
-	updateUser
+	updateUser,
+	getUsers,
+	getUser
 }
