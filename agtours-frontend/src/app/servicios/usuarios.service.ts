@@ -7,46 +7,57 @@ import { GLOBAL } from "./global";
 @Injectable()
 export class UsuariosService {
   public url: string;
+  public identidad;
+  public token;
 
   constructor( private _http: Http ) {
     this.url = GLOBAL.url;
   }
 
-  altaUsuario(user_to_register) {
-    let params = JSON.stringify(user_to_register);
-    let headers = new Headers({'Content-Type':'application/json'})
+    altaUsuario(user_to_register) {
+        let params = JSON.stringify(user_to_register);
+        let headers = new Headers({'Content-Type':'application/json'})
 
-    return this._http.post(this.url+'registro', params, {headers: headers})
-          .map(res => res.json());
-  }
-  
-  listadoUsuarios() {
+        return this._http.post(this.url+'registro', params, {headers: headers})
+                        .map(res => res.json());
+    }
+
+    listadoUsuarios() {
       return this._http.get(this.url+'usuarios').map(res => res.json());
-  }
+    }
+
+    signup(usuario_to_login, gettoken = null){
+
+        if(gettoken != null){
+            usuario_to_login.gettoken = gettoken;
+        }
+
+        let params = JSON.stringify(usuario_to_login);
+        let headers = new Headers({'Content-Type':'application/json'});
+
+        return this._http.post(this.url+'login', params, {headers: headers})
+                        .map(res => res.json());
+    }
 	
-	// altaUsuario(usuario: Usuario) {
-	// 	let body = JSON.stringify(usuario);
-	// 	return this.http.post('http://localhost:3789/api/registro', body, {headers: headers});
- //  }
+    getIdentidad(){
+        let identidad = JSON.parse(localStorage.getItem('identidad'));
+        if(identidad != "undefined"){
+            this.identidad = identidad;
+        } else {
+            this.identidad = null;
+        }
 
-  // actualizarUsuario(usuario) {
-  //     let body = JSON.stringify(usuario);
-  //     return this.http.put('http://www.abenitoc.com/agencia/php/actualizar.php' + usuario.idcliente, body, httpOptions);
-  // }
+        return this.identidad;
+    }
 
-  // borrarUsuario(usuario) {
-  //     return this.http.delete('http://www.abenitoc.com/agencia/php/borrarusuario.php' + usuario.idcliente);
-  // }
+    getToken(){
+        let token = localStorage.getItem('token');
+        if(token != "undefined"){
+            this.token = token;
+        } else {
+            this.token = null;
+        }
 
-
-
-	// altaUsuario(usuario: Usuario){
-	// 	let json = JSON.stringify(usuario);
-	// 	let params = 'json='+json;
-	// 	let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-
-	// 	return this.http.post('http://www.abenitoc.com/agencia/php/registrar.php', params, {headers: headers})
-	// 					 .map(res => res.json());
-	// }
-
+        return this.token;        
+    }
 }

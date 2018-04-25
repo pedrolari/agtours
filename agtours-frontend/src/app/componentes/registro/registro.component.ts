@@ -13,7 +13,7 @@ import { UsuariosService } from "../../servicios/usuarios.service";
 export class RegistroComponent implements OnInit {
 
 	public usuario: Usuario;
-	public message: string;
+	public status: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -27,17 +27,16 @@ export class RegistroComponent implements OnInit {
 		console.log('Componente registro cargado!!!!!');
 	}
 
-	guardarUsuario(){
+	onSubmit(){
 		this._usuariosService.altaUsuario(this.usuario).subscribe(
 			response => {
-				if(response.usuario && response.usuario._id){
-					this.message = 'El registro se ha realizado correctamente';
+				if(response.user && response.user._id){
+					this.status = 'success';
 					this._router.navigate(['/usuarios']);
+					this.usuario = new Usuario('', '', '', '', '', '', '', '');
 				} else {
-					this.message = 'Error al registrarme';
+					this.status = 'error';
 				}
-
-				this.usuario = new Usuario('', '', '', '', '', '', '', '');
 			},
 			error => {
 				console.log(<any>error);

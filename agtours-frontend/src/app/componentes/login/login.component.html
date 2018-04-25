@@ -6,27 +6,39 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Accede a tu cuenta</h4>
       </div>
+
+      <div class="alert alert-success" *ngIf="status == 'success'">
+        Login correcto
+      </div>
+
+      <div class="alert alert-danger" *ngIf="status == 'error'">
+        No te has identificado correctamente
+      </div>
+
+
       <div class="modal-body">
-        <form >
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <input type="email" class="form-control bg-ash" id="email" placeholder="Email" name="email" required>
+            <input type="email" #emaillogin="ngModel" [(ngModel)]="usuario.email" class="form-control bg-ash" placeholder="Email" name="emaillogin" required>
+            <span *ngIf="!emaillogin.valid && emaillogin.touched">El email es obligatorio</span>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control bg-ash" id="password" placeholder="Password" name="password" required>
+            <input type="password" #passwordlogin="ngModel" [(ngModel)]="usuario.password" class="form-control bg-ash" placeholder="Password" name="passwordlogin" required>
+            <span *ngIf="!passwordlogin.valid && passwordlogin.touched">El password es obligatorio</span>
           </div>
-          <div class="checkbox">
+<!--           <div class="checkbox">
             <label>
               <input type="checkbox"> Recuerdame
             </label>
             <a class="forgotPass clerfix" href="">Olvidaste el Password?</a>
-          </div>
+          </div> -->
           <button type="submit" class="btn btn-default">Acceder</button>
         </form>
       </div>
 
       <div class="modal-footer">
           <div class="dontHaveAccount">
-            <p>Aún no tienes una cuenta?<a href=""> Regístrate</a></p>
+            <p>Aún no tienes una cuenta?<a data-target="#signup" data-toggle="modal" href=""> Regístrate</a></p>
           </div>
       </div>
     </div>

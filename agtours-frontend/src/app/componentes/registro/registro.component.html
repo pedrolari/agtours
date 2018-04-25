@@ -9,8 +9,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Crea tu Cuenta</h4>
       </div>
+
+      <div class="alert alert-success" *ngIf="status == 'success'">
+        Registro realizado correctamente
+      </div>
+
+      <div class="alert alert-danger" *ngIf="status == 'error'">
+        No se ha realizado el registro correctamente
+      </div>
+
+
       <div class="modal-body">
-        <form #registroForm="ngForm" (ngSubmit)="guardarUsuario();" id="form-producto">
+        <form #registroForm="ngForm" (ngSubmit)="onSubmit();" id="form-producto">
           <div class="form-group">
             
             <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" class="form-control bg-ash" placeholder="Nombre" required>

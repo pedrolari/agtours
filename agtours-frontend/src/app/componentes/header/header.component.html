@@ -128,7 +128,7 @@
                             Galeria
                         </a>
                     </li>
-                    <li class="dropdown singleDrop ">
+                    <li class="dropdown singleDrop" *ngIf="!identidad">
                         <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button">
                             Cuenta
                         </a>
@@ -145,6 +145,23 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="dropdown singleDrop" *ngIf="identidad">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button">
+                            {{ identidad.nombre }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="">
+                                <a data-target="#signup" data-toggle="modal" href="">
+                                    Mis Datos
+                                </a>
+                            </li>
+                            <li class="">
+                                <a  (click)="logout()" href="">
+                                    Cerrar Sesion
+                                </a>
+                            </li>
+                        </ul>
+                    </li>                    
                     <li>
                         <div class="navbar-btn">
                             <a class="btn btn-nav">
