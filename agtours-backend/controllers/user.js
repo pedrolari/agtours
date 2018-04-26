@@ -4,6 +4,12 @@
 	// Cargamos la libreria de bcrypt
 	var bcrypt = require('bcrypt-nodejs');
 
+	//trabajamos con el servidor de ficheros
+	var fs = require('fs');
+
+	//accedemos a rutas de nuestro sistema de archivos
+	var path = require('path');
+
 // MODELOS
 	//Cargamos el modelo user para crear nuevos usuarios
 	var User = require('../models/user');
@@ -218,6 +224,78 @@
 			}			
 		});
 	}
+
+	// funcion para subir la imagen del usuario
+	function uploadImage(req, res){
+		var userId = req.params.id;
+		var file_name = 'No Subido...';
+
+		if(req.files){
+			var file_path = req.files.image.path;
+			var file_split = file_path.split('\\');
+			var file_name = file_split[2];
+
+			// sacamos la extension del fichero
+			var ext_split = file_name.split('\.');
+			var file_ext = ext_split[1];
+
+			if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' ||file_ext == 'gif'){
+				
+				if(userId != req.user.sub){
+					return res.status(500).send({
+						message: 'No tienes permiso para actualizar el usuario'
+					});
+				}
+
+				// En el caso de que el userid sea el id del usuario logueado
+				// Este metodo recibe el id del documento a actualizar, y un objeto con los datos a actualizar
+				// Con { new:true } hacemos que directamente nos devuelva el json con el nuevo objeto modificado
+				User.findByIdAndUpdate(userId, {image: file_name}, { new:true }, (err, userUpdated) => {
+					if(err){
+						res.status(500).send({
+							message: 'Error al actualizar el usuario'
+						});
+					} else {
+						if(!userUpdated){
+							res.status(404).send({
+								message: 'No se ha podido actualizar el usuario'
+							});
+						} else {
+							// en caso de que sea correcto devolvemos el json con los datos
+							res.status(200).send({ user: userUpdated, image: file_name });
+						}
+					}
+				});				
+			} else {
+				fs.unlink(file_path, (err) => {
+					if(err){
+						res.status(200).send({ message: 'Extension no valida y fichero no borrado' });
+					} else {
+						res.status(200).send({ message: 'Extension no valida' });
+					}
+				});
+			}
+
+		} else {
+			res.status(200).send({ message: 'No se han subido ficheros'	});
+		}
+	}
+
+	// funcion para subir la imagen del usuario
+	function getImageFile(req, res){
+		var imageFile = req.params.imageFile;
+		var path_file = './uploads/users/'+imageFile;
+
+		fs.exists(path_file, function(exists){
+			if(exists){
+				res.sendFile(path.resolve(path_file));
+			} else {
+				res.status(404).send({ message: 'La imagen no existe' });
+			}
+		});
+	}
+
+
 // Exportamos todos los metodos seguidos por comas, para poder utilizarlos fuera
 // Esto devolvera un objeto con todos los metodos.
 module.exports = {
@@ -226,5 +304,7 @@ module.exports = {
 	login,
 	updateUser,
 	getUsers,
-	getUser
+	getUser,
+	uploadImage,
+	getImageFile
 }
