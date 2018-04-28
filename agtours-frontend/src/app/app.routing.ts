@@ -10,11 +10,9 @@ import { DestinosComponent } from './destinos/destinos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
 import { RegistroUltimoComponent } from './registro/registroultimo.component';
-import { UserEditComponent } from './componentes/user-edit/user-edit.component';
 
 
 const routes: Routes =[
-    { path: '', 				redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio',           component: InicioComponent },
     { path: 'tours',           	component: ToursComponent },
     { path: 'hoteles',       	component: HotelesComponent },
@@ -22,8 +20,7 @@ const routes: Routes =[
 	{ path: 'galeria',          component: GaleriaComponent },
 	{ path: 'usuarios',         component: ListadoUsuariosComponent },
 	{ path: 'registro',         component: RegistroUltimoComponent },
-	{ path: 'datos-usuario',    component: UserEditComponent },
-	{ path: '**',			    component: InicioComponent }
+    // { path: '', 				redirectTo: 'inicio', pathMatch: 'full' }
 ];
 
 export const appRoutingProviders: any []=[];

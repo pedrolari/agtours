@@ -14,7 +14,6 @@ var UserSchema = Schema({
 	telefono: Number,
 	email: String,
 	password: String,
-	image: String,
 	rol: { type: Schema.ObjectId, ref: 'Rol' },
 	ciudad: { type: Schema.ObjectId, ref: 'Ciudad' },
 	cp: Number
