@@ -7,8 +7,9 @@ export class Usuario {
     public cp:string,
     public telefono:string,
     public email:string,
-    public password:string
-    // public rol:string,
+    public password:string,
+    public role: string,
+    public image: string,
     // public idciudad:string,
     ) { }
 

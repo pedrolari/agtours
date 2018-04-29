@@ -1,7 +1,9 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
 import { UsuariosService } from "../../servicios/usuarios.service";
+
+import { GLOBAL } from "../../servicios/global";
+
 
 @Component({
   selector: 'app-header',
@@ -10,15 +12,18 @@ import { UsuariosService } from "../../servicios/usuarios.service";
     providers: [UsuariosService]
 
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
 
-	public identidad;
+    public identidad;
+    public url: string;
 
     constructor(
         private _route: ActivatedRoute,
         private _router: Router, 
-  		private _usuariosService: UsuariosService
-  	) { }
+        private _usuariosService: UsuariosService
+  	) {
+        this.url = GLOBAL.url;
+    }
 
     ngOnInit() {
       	// obtenemos la identidad en caso de estar logueados

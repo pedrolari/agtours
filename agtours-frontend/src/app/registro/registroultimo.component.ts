@@ -19,7 +19,7 @@ export class RegistroUltimoComponent implements OnInit {
 		private _router: Router,
     private _usuariosService: UsuariosService
 		) {
-		this.usuario = new Usuario("","","", "", "", "", "", "");
+		this.usuario = new Usuario('', '', '', '', '', '', '', '', 'ROLE_USER', '');
 	}
 
   ngOnInit() {

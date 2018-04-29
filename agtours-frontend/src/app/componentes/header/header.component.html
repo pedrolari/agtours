@@ -146,17 +146,23 @@
                         </ul>
                     </li>
                     <li class="dropdown singleDrop" *ngIf="identidad">
+
+
+                        
+
+
+
                         <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button">
-                            {{ identidad.nombre }}
+                           <img src="{{ url + 'get-image-file/' + identidad.image }}" style="width: 20px;height: 20px; border-radius: 500px;"> {{ identidad.nombre }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="">
-                                <a data-target="#signup" data-toggle="modal" href="">
+                                <a [routerLink]="['/mis-datos']">
                                     Mis Datos
                                 </a>
                             </li>
                             <li class="">
-                                <a  (click)="logout()" href="">
+                                <a  (click)="logout()">
                                     Cerrar Sesion
                                 </a>
                             </li>

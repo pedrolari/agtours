@@ -20,7 +20,7 @@ export class RegistroComponent implements OnInit {
 		private _router: Router,
 		private _usuariosService: UsuariosService
 		) {
-		this.usuario = new Usuario('', '', '', '', '', '', '', '');
+		this.usuario = new Usuario('', '', '', '', '', '', '', '', 'ROLE_USER', '');
 	}
 
 	ngOnInit() {
@@ -33,7 +33,7 @@ export class RegistroComponent implements OnInit {
 				if(response.user && response.user._id){
 					this.status = 'success';
 					this._router.navigate(['/usuarios']);
-					this.usuario = new Usuario('', '', '', '', '', '', '', '');
+					this.usuario = new Usuario('', '', '', '', '', '', '', '', 'ROLE_USER', '');
 				} else {
 					this.status = 'error';
 				}

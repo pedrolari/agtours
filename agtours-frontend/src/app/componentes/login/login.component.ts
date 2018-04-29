@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 		private _router: Router, 
 		private _usuariosService: UsuariosService, 
 	) {
-		this.usuario = new Usuario('', '', '', '', '', '', '', '');
+		this.usuario = new Usuario('', '', '', '', '', '', '', '', 'ROLE_USER', '');
 	}
 
 	ngOnInit() {
@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
 				if(!this.identidad || !this.identidad._id){
 					alert('El usuario no se ha logueado correctamente');
 				} else {
-
-					this.identidad.password = '';
+					// this.identidad.password = '';
 
 					// grabamos en localstorage la identidad para la persistencia
 					localStorage.setItem('identidad', JSON.stringify(this.identidad));
@@ -54,6 +53,7 @@ export class LoginComponent implements OnInit {
 							if(this.token.length <= 0){
 								alert('El token no se ha generado');
 							} else {
+								
 								// grabamos en localstorage el token para la persistencia
 								localStorage.setItem('token', this.token);
 								this.status = 'success';

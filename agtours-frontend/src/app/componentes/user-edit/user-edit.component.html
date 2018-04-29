@@ -1,0 +1,57 @@
+<section class="settingSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="settingContent bg-ash">
+                    <h4>
+                        Mis Datos
+                    </h4>
+                    <!-- Change Password -->
+                    <div class="">
+                        <p>
+                            Cambia los datos que desees
+                        </p>
+                        <div *ngIf="status == 'success'" class="alert alert-success">
+                            Datos actualizados correctamente
+                        </div>
+                        <div *ngIf="status == 'error'" class="alert alert-danger">
+                            No se han podido actualizar tus datos correctamente
+                        </div>
+                        <div class="row">
+                            <form #userEditform="ngForm" (ngSubmit)="onSubmit()" id="update-user">
+                                <div class="col-sm-12">
+                                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" class="form-control"  placeholder="Nombre" required />
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" class="form-control"  placeholder="Apellidos" required />
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="usuario.direccion" class="form-control" placeholder="Direccion" required />
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" name="cp" #cp="ngModel" [(ngModel)]="usuario.cp" class="form-control" placeholder="Codigo Postal" required />
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" class="form-control" placeholder="Telefono" required /> 
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" class="form-control" placeholder="Email" required />
+                                </div>
+                                <div class="col-sm-12" *ngIf="usuario.image && usuario.image != 'null'">
+                                    <img src="{{ url + 'get-image-file/' + usuario.image }}" style="width: 60px;">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label>Sube tu imagen</label>
+                                    <input type="file" class="form-control" placeholder="Sube una imagen" (change)="fileChangeEvent($event)" />
+                                </div>                                   
+                                <div class="col-sm-12">
+                                    <button [disabled]="!userEditform.form.valid" class="btn buttonTransparent" type="submit">Actualizar Datos</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
