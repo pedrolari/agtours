@@ -1,0 +1,27 @@
+<!-- PAGE CONTENT -->
+    <section class="mainContentSection blogSidebar recentActivitySection">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-xs-12">
+            <aside>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">{{ title }}</div>
+                <div class="panel-body">
+                  <div class="list-group">
+                    <a [routerLink]="['/admin-panel/listado']" class="list-group-item">Listado de Tours</a>
+                    <a [routerLink]="['/admin-panel/crear']" class="list-group-item">Alta de Tours</a>
+                    <a [routerLink]="['/admin-panel/editar']" class="list-group-item">Modificacion de Tours</a>
+                    <a href="#" class="list-group-item">Alta de Hoteles</a>
+                    <a href="#" class="list-group-item">Modificacion de Hoteles</a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="col-sm-9 col-xs-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </section>

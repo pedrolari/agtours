@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // import { UsuariosService } from "./servicios/usuarios.service";
 
+
+// importamos nuestros modulos
+import { AdminModule } from './admin/admin.module';
+
+// importamos nuestros componentes
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -62,7 +67,8 @@ import { UserEditComponent } from './componentes/user-edit/user-edit.component';
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing 
+    routing,
+    AdminModule 
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
