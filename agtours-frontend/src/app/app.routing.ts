@@ -11,6 +11,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
 import { RegistroUltimoComponent } from './registro/registroultimo.component';
 import { UserEditComponent } from './componentes/user-edit/user-edit.component';
+import { DetalleTourComponent } from './componentes/detalle-tour/detalle-tour.component';
 
 
 const routes: Routes =[
@@ -22,6 +23,7 @@ const routes: Routes =[
 	{ path: 'galeria',          component: GaleriaComponent },
 	{ path: 'usuarios',         component: ListadoUsuariosComponent },
 	{ path: 'registro',         component: RegistroUltimoComponent },
+	{ path: 'tour/:id',       component: DetalleTourComponent },
 	{ path: 'mis-datos',        component: UserEditComponent },
     { path: '**', 				component: InicioComponent }
 ];

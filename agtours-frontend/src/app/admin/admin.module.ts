@@ -11,12 +11,20 @@ import { ListComponent } from './componentes/list/list.component';
 import { EditComponent } from './componentes/edit/edit.component';
 import { AddComponent } from './componentes/add/add.component';
 
+// SERVICIOS
+import { AdminGuard } from '../servicios/admin.guard';
+import { UsuariosService } from "../servicios/usuarios.service";
+import { DetailComponent } from './componentes/detail/detail.component';
+import { SearchPipe } from './pipes/search.pipe';
+
 @NgModule({
 	declarations: [
 		InicioComponent,
 		ListComponent,
 		EditComponent,
-		AddComponent
+		AddComponent,
+		DetailComponent,
+		SearchPipe
 	],
 	imports: [
 		CommonModule,
@@ -30,7 +38,10 @@ import { AddComponent } from './componentes/add/add.component';
 		EditComponent,
 		AddComponent
 	],
-	providers: []
+	providers: [
+		UsuariosService,
+		AdminGuard
+	]
 })
 
 export class AdminModule { }

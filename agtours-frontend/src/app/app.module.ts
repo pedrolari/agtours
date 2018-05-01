@@ -34,6 +34,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
 import { RegistroUltimoComponent } from './registro/registroultimo.component';
 import { UserEditComponent } from './componentes/user-edit/user-edit.component';
+import { DetalleTourComponent } from './componentes/detalle-tour/detalle-tour.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { UserEditComponent } from './componentes/user-edit/user-edit.component';
     GaleriaComponent,
     ListadoUsuariosComponent,
     RegistroUltimoComponent,
-    UserEditComponent
+    UserEditComponent,
+    DetalleTourComponent
   ],
   imports: [
     BrowserModule,
