@@ -2,106 +2,42 @@
 <section class="topHotelSection ptb-100">
   <div class="container">
     <div class="sectionTitleHomeCity">
-      <h2>top Hotels</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <h2>TOP Hoteles</h2>
+      <p>Descubre los mejores hoteles</p>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-lg-4 col-xs-12">
+      <div class="col-sm-6 col-lg-4 col-xs-12" *ngFor="let hotel of hotels">
         <div class="thumbnail deals">
-          <img src="/assets/img/holets/hotel-list-10.jpg" alt="Hotel-image">
-          <a href="single-hotel-right-sidebar.html" class="pageLink"></a>
+          <img src="{{ url + 'get-image-hotel/' + hotel.image }}" alt="Hotel-image">
+          <a [routerLink]="['/hotel', hotel._id]" class="pageLink"></a>
           <div class="discountInfo discountCol-3">
-            <ul class="list-inline rating homePage">
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-            </ul>
+            <div class="discountOffer">
+              <h4>
+                {{ hotel.descuento }} % <span> OFF</span>
+              </h4>
+            </div>
             <ul class="list-inline duration">
-              <li>5 Review</li>
+              <li>{{ hotel.categoria }} <i class="fa fa-star" aria-hidden="true"></i></li>
             </ul>
-          </div>
+          </div>          
           <div class="caption">
-          <a href="single-hotel-right-sidebar.html" class="captionTitle"><h4>Marriott Hotel London</h4></a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+          <a [routerLink]="['/hotel', hotel._id]" class="captionTitle"><h4>{{ hotel.nombre }}</h4></a> 
+            <p>{{ hotel.descripcion }}</p>
             <div class="detailsInfo">
+              <br>
               <h5>
-                <span>Per night</span>
-                $150
+                <span>Comienza en </span>
+                {{ hotel.preciosimple }} €
               </h5>
+
               <ul class="list-inline detailsBtn">
-                <li><a href='booking-1.html' class="btn buttonTransparent">Book now</a></li>
+                <li><a [routerLink]="['/hotel', hotel._id]" class="btn buttonTransparent">Reserva Ya</a></li>
+                <li><a href="#" class="btn buttonTransparent"><i class="fa fa-map-marker" aria-hidden="true"></i></a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-lg-4 col-xs-12">
-        <div class="thumbnail deals">
-          <img src="/assets/img/holets/hotel-list-11.jpg" alt="Hotel-image">
-          <a href="single-hotel-right-sidebar.html" class="pageLink"></a>
-          <div class="discountInfo discountCol-3">
-            <ul class="list-inline rating homePage">
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-            </ul>
-            <ul class="list-inline duration">
-              <li>5 Review</li>
-            </ul>
-          </div>
-          <div class="caption">
-            <a href="single-hotel-right-sidebar.html" class="captionTitle"><h4>Marriott Hotel London</h4></a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
-            <div class="detailsInfo">
-              <h5>
-                <span>Per night</span>
-                $150
-              </h5>
-              <ul class="list-inline detailsBtn">
-                <li><a href='booking-1.html' class="btn buttonTransparent">Book now</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 col-xs-12">
-        <div class="thumbnail deals">
-          <img src="/assets/img/holets/hotel-list-12.jpg" alt="Hotel-image">
-          <a href="single-hotel-right-sidebar.html" class="pageLink"></a>
-          <div class="discountInfo discountCol-3">
-            <ul class="list-inline rating homePage">
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li><i class="fa fa-star" aria-hidden="true"></i></li>
-            </ul>
-            <ul class="list-inline duration">
-              <li>5 Review</li>
-            </ul>
-          </div>
-          <div class="caption">
-            <a href="single-hotel-right-sidebar.html" class="captionTitle"><h4>Marriott Hotel London</h4></a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
-            <div class="detailsInfo">
-              <h5>
-                <span>Per night</span>
-                $150
-              </h5>
-              <ul class="list-inline detailsBtn">
-                <li><a href='booking-1.html' class="btn buttonTransparent">Book now</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="homeCitybtn">
-      <a href="hotels-list-right-sidebar.html" class="btn buttonTransparent">view all Hotels</a>
     </div>
   </div>
 </section>

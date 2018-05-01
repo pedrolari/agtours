@@ -9,6 +9,16 @@ var Schema = mongoose.Schema;
 // Definimos el Schema de un documento de nuestra coleccion de usuarios
 var HotelSchema = Schema({
 	nombre: String,
+	descripcion: String,
+	extras: String,
+	categoria: String,
+	preciosimple: Number,
+	preciodoble: Number,
+	descuento: Number,
+	numhabitaciones: Number,
+	ciudad: { type: Schema.ObjectId, ref: 'Ciudad' },
+	image: String,
+	user: { type: Schema.ObjectId, ref: 'User' }
 	
 });
 

@@ -2,60 +2,61 @@ import { Component,DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { GLOBAL } from "../../../servicios/global";
-import { Tour } from "../../../modelos/tour";
-import { TourService } from "../../../servicios/tour.service";
+import { Hotel } from "../../../modelos/hotel";
+import { HotelService } from "../../../servicios/hotel.service";
 import { UsuariosService } from "../../../servicios/usuarios.service";
 import { UploadService } from "../../../servicios/upload.service";
 
+
 @Component({
-	selector: 'app-add',
-	templateUrl: './add.component.html',
-	providers: [UsuariosService, TourService,UploadService]
+  selector: 'app-addhotel',
+  templateUrl: './addhotel.component.html',
+  providers: [UsuariosService, HotelService, UploadService]
 })
-export class AddComponent implements OnInit {
+export class AddhotelComponent implements OnInit {
 
 	public title;
-	public tour: Tour;
+	public hotel: Hotel;
 	public identidad;
 	public token;
 	public url: string;
 	public status;
-	
+
 	constructor( 
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _usuariosService: UsuariosService,
-		private _tourService: TourService,
+		private _hotelService: HotelService,
 		private _uploadService: UploadService		
 	) {
-		this.title = 'Alta de Tour';
-		this.tour = new Tour('', '', '', '', '', '', '', '', '');
+		this.title = 'Alta de Hotel';
+		this.hotel = new Hotel('', '', '', '', '', '', '', '', '', '');
 		this.identidad = this._usuariosService.getIdentidad();
 		this.token = this._usuariosService.getToken();
 		this.url = GLOBAL.url;
 	}
 
 	ngOnInit() {
-		console.log('Añadir tour component ha sido cargado');
+		console.log('Añadir hotel component ha sido cargado');
 	}
 
 	onSubmit(){
-		this._tourService.addTour(this.token, this.tour).subscribe(
+		this._hotelService.addHotel(this.token, this.hotel).subscribe(
 			response => {
-				if(!response.tour){
+				if(!response.hotel){
 					this.status = 'error';
 				} else {
 					this.status = 'success';
-					this.tour = response.tour;
+					this.hotel = response.hotel;
 					
 					// Subida de la imagen
 					if (!this.filesToUpload) {
-						this._router.navigate(['/admin-panel/listado']);
+						this._router.navigate(['/admin-panel/listadohoteles']);
 					} else {
-						this._uploadService.makeFileRequest(this.url + 'upload-image-tour/' + this.tour._id, [], this.filesToUpload, this.token, 'image')
+						this._uploadService.makeFileRequest(this.url + 'upload-image-hotel/' + this.hotel._id, [], this.filesToUpload, this.token, 'image')
 							.then((result: any) => {
-								this.tour.image = result.image;
-								this._router.navigate(['/admin-panel/listado']);	
+								this.hotel.image = result.image;
+								this._router.navigate(['/admin-panel/listadohoteles']);	
 						});
 					}
 				}

@@ -1,0 +1,164 @@
+	<div *ngIf="hotel">
+    <!-- PAGE CONTENT -->
+    <section class="singleHotel">
+      <div class="container">
+        <div class="row ">
+          <div class="col-sm-9 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12" *ngIf="hotel.image && hotel.image != 'null'">
+                <div id="package-carousel" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#package-carousel" data-slide-to="0" class=""></li>
+                    <li data-target="#package-carousel" data-slide-to="1" class=""></li>
+                    <li data-target="#package-carousel" data-slide-to="2" class="active"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="item">
+                      <img alt="Primera imagen" src="{{ url + 'get-image-hotel/' + hotel.image }}">
+                    </div>
+                    <div class="item">
+                      <img alt="Segunda imagen" src="{{ url + 'get-image-hotel/' + hotel.image }}">
+                    </div>
+                    <div class="item active">
+                      <img alt="Tercera imagen" src="{{ url + 'get-image-hotel/' + hotel.image }}">
+                    </div>
+                  </div>
+                  <a class="left carousel-control" href="#package-carousel" data-slide="prev"><span class="glyphicon glyphicon-menu-left"></span></a>
+                  <a class="right carousel-control" href="#package-carousel" data-slide="next"><span class="glyphicon glyphicon-menu-right"></span></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="description-aria">
+                  <div class="sectionTitle1">
+                    <h2>{{ hotel.nombre }}</h2>
+                  </div>                  	
+                  <div class="sectionTitle2">
+                    <h2>Descripcion</h2>
+                    <p>{{ hotel.descripcion }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="rooms-types-aria">
+                  <div class="sectionTitle2">
+                    <h2>Tipos de habitacion</h2>
+                    <p>descripcion de las habitaciones</p>
+                  </div>
+                  <div class="roomCategory">
+                    <div class="sub-title">
+                      <h4>Habitacion Doble</h4>
+                      <p>{{ hotel.extras }}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-9">
+                        <ul class="roomAdvantage">
+                          <li><a href="#"><img src="/assets/img//packages/shape-icon-1.png" alt="Image">Breakfast</a></li>
+                          <li><a href="#"><img src="/assets/img/packages/shape-icon-2.png" alt="Image">Plasma TV</a></li>
+                          <li><a href="#"><img src="/assets/img/packages/shape-icon-3.png" alt="Image">Free wifi</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="roomRate">
+                          Por Noche: <span>{{ hotel.preciodoble }}€</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="roomGellary">
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-01.jpg">
+                          <img src="/assets/img/hotels/hotel-list-01.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-02.jpg">
+                          <img src="/assets/img/hotels/hotel-list-02.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-03.jpg">
+                          <img src="/assets/img/hotels/hotel-list-03.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-04.jpg">
+                          <img src="/assets/img/hotels/hotel-list-04.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-05.jpg">
+                          <img src="/assets/img/hotels/hotel-list-05.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="roomCategory">
+                    <div class="sub-title">
+                      <h4>Habitacion Simple</h4>
+                      <p>{{ hotel.extras }}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-9">
+                        <ul class="roomAdvantage">
+                          <li><a href="#"><img src="/assets/img//packages/shape-icon-1.png" alt="Image">Breakfast</a></li>
+                          <li><a href="#"><img src="/assets/img/packages/shape-icon-2.png" alt="Image">Plasma TV</a></li>
+                          <li><a href="#"><img src="/assets/img/packages/shape-icon-3.png" alt="Image">Free wifi</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="roomRate">
+                          Por Noche: <span>{{ hotel.preciosimple }}€</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="roomGellary">
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-01.jpg">
+                          <img src="/assets/img/hotels/hotel-list-01.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-02.jpg">
+                          <img src="/assets/img/hotels/hotel-list-02.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-03.jpg">
+                          <img src="/assets/img/hotels/hotel-list-03.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-04.jpg">
+                          <img src="/assets/img/hotels/hotel-list-04.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                      <div class="single-item">
+                        <a class="fancybox-pop" rel="portfolio-1" href="/assets/img/hotels/hotel-list-05.jpg">
+                          <img src="/assets/img/hotels/hotel-list-05.jpg" alt="Double Room">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="location-aria">
+
+                     <ul class="list-inline detailsBtn">
+                        <li><span class="btn buttonTransparent">Categoria {{ hotel.categoria }} <i class="fa fa-star" aria-hidden="true"></i> </span></li>
+                        <li><span class="btn buttonTransparent">Num. Habitaciones {{ hotel.numhabitaciones }} <i class="fa fa-bed" aria-hidden="true"></i> </span></li>
+                        <li><span class="btn buttonTransparent">Descuento {{ hotel.descuento }} <i class="fa fa-percent" aria-hidden="true"></i> </span></li>
+                      </ul>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+	</div>	    

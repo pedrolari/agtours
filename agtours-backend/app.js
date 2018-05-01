@@ -11,6 +11,7 @@ var app = express();
 //Cargar rutas
 var user_routes = require('./routes/user');
 var tour_routes = require('./routes/tour');
+var hotel_routes = require('./routes/hotel');
 
 //Middlewares de body-parser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 // el primer parametro es para poner un prefijo, si no queremos prefijo ponemos /
 app.use('/api', user_routes);
 app.use('/api', tour_routes);
+app.use('/api', hotel_routes);
 
 // Rutas body-parser
 
