@@ -54,4 +54,39 @@ export class HotelService {
 
     }
 
+     //RESERVAS DE HOTELES
+    addReserva(token, reserva){
+        let params = JSON.stringify(reserva);
+        let headers = new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+        })
+
+        return this._http.post(this.url+'hotel-reservas', params, {headers: headers})
+                         .map(res => res.json());
+    }
+
+    getALLReservas(){
+        return this._http.get(this.url+'hotel-reservas/').map(res => res.json());
+    } 
+
+    getReservas(id){
+        return this._http.get(this.url+'hotel-reservas-usuario/'+id).map(res => res.json());
+    } 
+
+    getReserva(id){
+        return this._http.get(this.url+'hotel-reservas/'+id).map(res => res.json());
+    }
+    
+    deleteReservaHotel(token, id){
+        let headers = new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+        });
+
+        let options = new RequestOptions({ headers: headers});
+        return this._http.delete(this.url+'hotel-reservas/'+id, options)
+                   .map(res => res.json());
+
+    }   
 }

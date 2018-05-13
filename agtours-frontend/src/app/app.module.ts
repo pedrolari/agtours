@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 
 // importamos nuestros modulos
 import { AdminModule } from './admin/admin.module';
+import { UserPanelModule } from './userpanel/userpanel.module';
 
 // importamos nuestros componentes
 import { AppComponent } from './app.component';
@@ -72,7 +73,8 @@ import { DetalleHotelComponent } from './componentes/detalle-hotel/detalle-hotel
     HttpModule,
     FormsModule,
     routing,
-    AdminModule 
+    AdminModule,
+    UserPanelModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

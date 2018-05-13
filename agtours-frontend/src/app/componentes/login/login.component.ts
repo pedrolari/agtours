@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UsuariosService } from "../../servicios/usuarios.service";
 import { Usuario } from "../../modelos/usuario";
 
+import {ViewChild, ElementRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,8 @@ export class LoginComponent implements OnInit {
 	public token;
 	public status: string;
 
+	@ViewChild('closeBtn') closeBtn: ElementRef;
+
 	constructor(
   		private _route: ActivatedRoute,
 		private _router: Router, 
@@ -26,9 +30,9 @@ export class LoginComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log('Login.component cargado');
-		console.log(this._usuariosService.getIdentidad());
-		console.log(this._usuariosService.getToken());
+		// console.log('Login.component cargado');
+		// console.log(this._usuariosService.getIdentidad());
+		// console.log(this._usuariosService.getToken());
 	}
 
 	onSubmit() {
@@ -58,6 +62,9 @@ export class LoginComponent implements OnInit {
 								localStorage.setItem('token', this.token);
 								this.status = 'success';
 								this._router.navigate(['/inicio']);
+								// setTimeout((_router: Router) => { this._router.navigate(['/inicio']);}, 2000);
+								// $timeout(function () { modalInstance.close('closing');}, 2000);
+								this.closeModal();
 							}
 						},
 						error => {
@@ -78,4 +85,9 @@ export class LoginComponent implements OnInit {
 
 		);
 	}
+
+	//call this wherever you want to close modal
+    private closeModal(): void {
+        this.closeBtn.nativeElement.click();
+    }
 }

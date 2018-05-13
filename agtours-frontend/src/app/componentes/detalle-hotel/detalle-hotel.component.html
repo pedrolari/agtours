@@ -178,79 +178,131 @@
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-xs-12">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" #bookingFormHotel="ngForm" (ngSubmit)="addReserva();">
                         <div class="form-group">
                           <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Entrada:</label>
                           <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
-                            <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                              <input type="text" class="form-control" placeholder="MM/DD/YYYY">
-                              <div class="input-group-addon">
-                                <span class="fa fa-calendar"></span>
-                              </div>
-                            </div>
+                            <input type="date" class="form-control" name="fechaentrada" #fechaentrada="ngModel" [(ngModel)]="reservahotel.fechaentrada" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Salida:</label>
                           <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
-                            <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                              <input type="text" class="form-control" placeholder="MM/DD/YYYY">
-                              <div class="input-group-addon">
-                                <span class="fa fa-calendar"></span>
-                              </div>
-                            </div>
+                            <input type="date" class="form-control" name="fechasalida" #fechasalida="ngModel" [(ngModel)]="reservahotel.fechasalida" required>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="control-label col-md-4 col-sm-12 col-xs-4" for="inputSuccess3">Hab.:</label>
-                          <div class="col-md-8 col-sm-12 col-xs-8 datepickerWrap">
-                            <div class="searchFilter">
-                              <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                                <option value="0">Doble</option>
-                                <option value="1">Simple</option>
-                              </select>
+                          <label class="control-label col-md-5 col-sm-12 col-xs-4" >Dobles:</label>
+                          <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
+                            <div class="count-input" *ngIf="numHabitacioneDobles>0">
+                              <a class="incr-btn"data-action="decrease" (click)="disminuirCantidad('dobles')">–</a>
+                              <input name="numhabitacionesdobles" #numhabitacionesdobles="ngModel" [(ngModel)]="reservahotel.numhabitacionesdobles" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('dobles')">+</a>
                             </div>
+                            <div class="count-input" *ngIf="numHabitacioneDobles<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numhabitacionesdobles" #numhabitacionesdobles="ngModel" [(ngModel)]="reservahotel.numhabitacionesdobles" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('dobles')">+</a>
+                            </div>                            
                           </div>
-                        </div>
+<!--                           <div class="col-md-2 col-sm-12 col-xs-2">
+                            <p class="price">{{ hotel.preciodoble }}€</p>
+                          </div> -->
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="control-label col-md-5 col-sm-12 col-xs-4" >Simples:</label>
+                          <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
+                            <div class="count-input" *ngIf="numHabitacioneSimple>0">
+                              <a class="incr-btn"data-action="decrease" (click)="disminuirCantidad('simple')">–</a>
+                              <input name="numhabitacionessimples" #numhabitacionessimples="ngModel" [(ngModel)]="reservahotel.numhabitacionessimples" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('simple')">+</a>
+                            </div>
+                            <div class="count-input" *ngIf="numHabitacioneSimple<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numhabitacionessimples" #numhabitacionessimples="ngModel" [(ngModel)]="reservahotel.numhabitacionessimples" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('simple')">+</a>
+                            </div>                            
+                          </div>
+<!--                           <div class="col-md-2 col-sm-12 col-xs-2">
+                            <p class="price">{{ hotel.preciosimple }}€</p>
+                          </div> -->
+                        </div>                        
                         <div class="form-group">
                           <label class="control-label col-md-5 col-sm-12 col-xs-4" >Adultos:</label>
                           <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
-                            <div class="count-input">
-                              <a class="incr-btn" data-action="decrease" href="#">–</a>
-                              <input class="quantity" type="text" value="1">
-                              <a class="incr-btn" data-action="increase" href="#">+</a>
-                              </div>
-                          </div>
-                          <div class="col-md-2 col-sm-12 col-xs-2">
-                            <p class="price">99€</p>
+                            <div class="count-input" *ngIf="numAdulto>0">
+                              <a class="incr-btn" data-action="decrease" (click)="disminuirCantidad('adulto')">–</a>
+                              <input name="numAdultos" #numAdultos="ngModel" [(ngModel)]="reservahotel.numAdultos" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('adulto')">+</a>
+                            </div>
+                            <div class="count-input" *ngIf="numAdulto<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numAdultos" #numAdultos="ngModel" [(ngModel)]="reservahotel.numAdultos" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('adulto')">+</a>
+                            </div>                            
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-md-5 col-sm-12 col-xs-4">Niños:</label>
                           <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
-                            <div class="count-input">
-                              <a class="incr-btn" data-action="decrease" href="#">–</a>
-                              <input class="quantity" type="text" value="0">
-                              <a class="incr-btn" data-action="increase" href="#">+</a>
-                              </div>
-                          </div>
-                          <div class="col-md-2 col-sm-12 col-xs-2">
-                            <p class="price">59€</p>
+                            <div class="count-input" *ngIf="numInfantil>0">
+                              <a class="incr-btn" data-action="decrease" (click)="disminuirCantidad('infantil')">–</a>
+                              <input name="numInfantiles" #numInfantiles="ngModel" [(ngModel)]="reservahotel.numInfantiles" class="quantity" type="number" value="0" min="0">
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('infantil')">+</a>
+                            </div>
+                            <div class="count-input" *ngIf="numInfantil<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numInfantiles" #numInfantiles="ngModel" [(ngModel)]="reservahotel.numInfantiles" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('infantil')">+</a>
+                            </div>                                
                           </div>
                         </div>
                         <div class="totalCost">
                           <div class="col-xs-8 totalCostLeft">
-                            <p>Total Cost</p>
+                            <p>Precio</p>
                           </div>
-                          <div class="col-xs-4 totalCostRight">$198</div>
+                          <div class="col-xs-4 totalCostRight">{{ this.precioTotal }}€</div>
                         </div>
-                        <div class="col-sm-12">
-                          <a href="#" class="btn btn-block buttonTransparent">Check now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <div class="totalCost">
+                          <div class="col-xs-8 totalCostLeft">
+                            <p>Descuento </p>
+                          </div>
+                          <div class="col-xs-4 totalCostRight">{{ hotel.descuento }}%</div>
+                        </div>   
+                        <div class="totalCost">
+                          <div class="col-xs-8 totalCostLeft">
+                            <p>Total </p>
+                          </div>
+                          <div class="col-xs-4 totalCostRight">{{ this.precioTotal - this.precioTotalDescuento }}€</div>
+                        </div>                                              
+                        <div class="col-sm-12" *ngIf="identidad && identidad.role == 'ROLE_USER'">
+                          <!-- <a [disabled]="!bookingForm.form.valid" class="btn btn-block buttonTransparent" (click)="hacerReserva()">Haz tu reserva <i class="fa fa-angle-right" aria-hidden="true"></i></a> -->
+                          <button [disabled]="!bookingFormHotel.form.valid" class="btn buttonTransparent" type="submit">Haz tu reserva</button>
                         </div>
+                        <div class="col-sm-12" *ngIf="!identidad || identidad.role != 'ROLE_USER'">
+                          <a class="btn btn-block buttonTransparent" disabled>Eres Admin</a>
+                        </div>                        
                       </form>
+                    </div>
+                    <div class="col-xs-12" *ngIf="!identidad">
+                      <div class="totalCost">
+                        <div class="col-xs-12 totalCostLeft">
+                          <p>DEBES ACCEDER A TU CUENTA PARA PODER RESERVAR</p>
+                        </div>
+                      </div>  
+                      <div class="totalCost">
+                        <div class="col-xs-12 totalCostRight">Acceder</div>
+                      </div>                                             
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="alert alert-success" *ngIf="status == 'success'">
+                Reserva realizada correctamente
+              </div>
+              <div class="alert alert-danger" *ngIf="status == 'error'">
+                No se ha realizado la reserva
               </div>
             </div>
           </aside>

@@ -12,6 +12,8 @@ var app = express();
 var user_routes = require('./routes/user');
 var tour_routes = require('./routes/tour');
 var hotel_routes = require('./routes/hotel');
+var reservashotel_routes = require('./routes/reservahotel');
+var reservastour_routes = require('./routes/reservatour');
 
 //Middlewares de body-parser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,6 +36,8 @@ app.use((req, res, next) => {
 app.use('/api', user_routes);
 app.use('/api', tour_routes);
 app.use('/api', hotel_routes);
+app.use('/api', reservashotel_routes);
+app.use('/api', reservastour_routes);
 
 // Rutas body-parser
 

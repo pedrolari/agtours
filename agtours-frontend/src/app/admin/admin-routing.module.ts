@@ -15,6 +15,9 @@ import { EdithotelComponent } from './componentes/edithotel/edithotel.component'
 import { AddhotelComponent } from './componentes/addhotel/addhotel.component';
 import { DetailhotelComponent } from './componentes/detailhotel/detailhotel.component';
 
+//Componentes Generales
+import { ListareservasComponent } from './componentes/listareservas/listareservas.component';
+
 import { AdminGuard } from '../servicios/admin.guard';
 
 const adminRoutes: Routes = [
@@ -31,7 +34,8 @@ const adminRoutes: Routes = [
 			{ path: 'listadohoteles', component: ListhotelComponent },
 			{ path: 'crearhotel', component: AddhotelComponent },
 			{ path: 'editarhotel/:id', component: EdithotelComponent },
-			{ path: 'hotel/:id', component: DetailhotelComponent }			
+			{ path: 'hotel/:id', component: DetailhotelComponent },
+			{ path: 'listado-reservas', component: ListareservasComponent },
 		]
 	}
 ];

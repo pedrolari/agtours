@@ -16,6 +16,9 @@ import { ListhotelComponent } from './componentes/listhotel/listhotel.component'
 import { EdithotelComponent } from './componentes/edithotel/edithotel.component';
 import { AddhotelComponent } from './componentes/addhotel/addhotel.component';
 
+//Componentes Generales
+import { ListareservasComponent } from './componentes/listareservas/listareservas.component';
+
 // SERVICIOS
 import { AdminGuard } from '../servicios/admin.guard';
 import { UsuariosService } from "../servicios/usuarios.service";
@@ -36,7 +39,8 @@ import { SearchPipe } from './pipes/search.pipe';
 		AddhotelComponent,
 		DetailhotelComponent,
 		EdithotelComponent,
-		ListhotelComponent
+		ListhotelComponent,
+		ListareservasComponent
 	],
 	imports: [
 		CommonModule,

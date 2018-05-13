@@ -154,7 +154,12 @@
                                 <a [routerLink]="['/admin-panel']">
                                     Panel de Administracion
                                 </a>
-                            </li>                            
+                            </li>   
+                            <li class="" *ngIf="identidad && identidad.role == 'ROLE_USER'">
+                                <a [routerLink]="['/user-panel']">
+                                    Gestion de Reservas
+                                </a>
+                            </li>                                                      
                             <li class="">
                                 <a [routerLink]="['/mis-datos']">
                                     Mis Datos

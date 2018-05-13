@@ -1,0 +1,73 @@
+<div class="thumbnail blogSinglePost">
+    <div class="recentActivityContent bg-ash">
+
+		<div class="dashboardPageTitle">
+			<h2>Busqueda de Reservas de Hoteles</h2>
+			<div class="input-group">
+				<input type="text" class="form-control" [(ngModel)]="busqueda">
+				<span class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></span>
+			</div>
+			<br>
+<!-- 			<div *ngIf="busqueda">
+				{{ busqueda }}	
+			</div> -->
+			
+		</div>              
+		<div class="dashboardPageTitle">
+			<h2>Todas las Reservas de Hoteles</h2>
+		</div>
+           		
+		<div class="table-responsive"  data-pattern="priority-columns">
+			<table class="table listingsTable">
+				<tbody>
+					<tr class="rowItem" *ngFor="let reserva of reservashotels">
+						<td class="dateTd">
+							<div class="date">
+								{{ reserva.fechaentrada | date : "dd" }} <span>{{ reserva.fechaentrada | date : "MMM" }}</span>
+							</div>
+						</td>
+						<td class="iconTd">
+							<div class="icon br-orange">
+								<i class="fa fa-hotel" aria-hidden="true"></i>
+							</div>
+						</td>
+						<td class="packageTd">
+							<ul class="list-inline listingsInfo">
+								<li>
+									<h4><a href="#">{{ reserva.hotel.nombre}}</a></h4>
+		    						<p>{{ reserva.numAdultos }} Adultos /  {{ reserva.numInfantiles }} Niños</p>
+								</li>
+							</ul>
+						</td>
+						<td class="iconTd">
+							<ul class="list-inline listingsInfo text-right">
+								<li>
+									<h3>{{ reserva.preciototal }}€</h3>
+            						
+								</li>
+							</ul>
+						</td>
+						<td class="bookingTd">
+						    <ul class="list-inline listingsInfo text-left">
+								<li>
+									<h4>ID RESERVA</h4>
+						            <p>{{ reserva._id }}</p>
+						            <h4>FECHA COMPRA</h4>
+						            <p>{{ reserva.fechaventa | date : shortDate }}</p>
+								</li>
+							</ul>
+						</td>
+						<td class="bookingTd">
+					        <ul class="list-inline listingsInfo text-left">
+								<li>
+                                    <a [routerLink]="['/user-panel/detalle-reserva-hotel', reserva._id]"><h4><span class="glyphicon glyphicon-eye-open"></span> VER</h4></a><br>
+						            <a href="/user-panel/reservas-hoteles" (click)="deleteReservaHotel(reserva._id)"><h4><span class="glyphicon glyphicon-trash"></span> CANCELAR</h4></a>
+								</li>
+							</ul>
+						</td>						
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+    </div>
+</div>

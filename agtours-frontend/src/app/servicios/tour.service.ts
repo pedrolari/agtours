@@ -54,4 +54,40 @@ export class TourService {
 
     }
 
+
+    //RESERVAS DE TOURS
+    addReserva(token, reserva){
+        let params = JSON.stringify(reserva);
+        let headers = new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+        })
+
+        return this._http.post(this.url+'tour-reservas', params, {headers: headers})
+                         .map(res => res.json());
+    }
+
+    getALLReservas(){
+        return this._http.get(this.url+'tour-reservas').map(res => res.json());
+    } 
+
+    getReservas(id){
+        return this._http.get(this.url+'tour-reservas-usuario/'+id).map(res => res.json());
+    } 
+
+    getReserva(id){
+        return this._http.get(this.url+'tour-reservas/'+id).map(res => res.json());
+    }
+    
+    deleteReservaTour(token, id){
+        let headers = new Headers({
+            'Content-Type':'application/json',
+            'Authorization':token
+        });
+
+        let options = new RequestOptions({ headers: headers});
+        return this._http.delete(this.url+'tour-reservas/'+id, options)
+                   .map(res => res.json());
+
+    }       
 }
