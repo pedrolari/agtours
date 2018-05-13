@@ -145,6 +145,9 @@
 		var userId = req.params.id;
 		var update = req.body;
 
+		//Para que no se borre la contraseña al actualizar el usuario
+		delete update.password;
+
 		// Si el id del usuario logueado es diferente a la id que me llega por URL
 		// le decimos que no tiene permiso para actualizar al usuario
 		if(userId != req.user.sub){

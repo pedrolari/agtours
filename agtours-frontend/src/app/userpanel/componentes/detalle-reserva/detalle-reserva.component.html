@@ -1,0 +1,117 @@
+		<div class="row">
+          <div class="col-sm-4 col-sm-push-8 col-xs-12">
+            <aside>
+              <div class="bookDetailsInfo">
+                <img src="{{ url + 'get-image-tour/' + reservatour.tour.image }}" alt="image">
+                <div class="infoArea">
+                  <h3>{{ reservatour.tour.nombre }}</h3>
+                  <ul class="list-unstyled">
+                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>Dias de Tour:  <span>{{ reservatour.tour.diastour }}</span></li>
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i>Inicio:  <span>{{ reservatour.fechainicio | date : shortDate }}</span></li>
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i>Fin:  <span>{{ reservatour.fechafin | date : shortDate }}</span></li>
+                    <li><i class="fa fa-user" aria-hidden="true"></i>Personas:  <span>{{ reservatour.numAdultos }} Adultos,  {{ reservatour.numInfantiles }} Niños</span></li>
+                  </ul>
+                  <div class="priceTotal">
+                    <h2>Total: <span>{{ reservatour.preciototal }}€</span></h2>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="col-sm-8 col-sm-pull-4 col-xs-12">
+            <div class="infoTitle">
+              <h2>Detalle de la Reserva de TOUR</h2>
+            </div>
+            <div class="bookingForm">
+              <form action="" method="POST" role="form" class="form">
+                <div class="row">
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.nombre }}" disabled>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Apellidos</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.apellidos }}" disabled>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Direccion</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.direccion }}" disabled>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Codigo Postal</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.cp }}" disabled>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Telefono</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.telefono }}" disabled>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" id="" value="{{ reservatour.user.email }}" disabled>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="infoTitle">
+                      <h2>Informacion de la Tarjeta</h2>
+                    </div>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Nombre de la Tarjeta</label>
+                    <input type="text" class="form-control" id="">
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Numero de la Tarjeta</label>
+                    <input type="text" class="form-control" id="">
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">CVV</label>
+                    <input type="text" class="form-control" id="">
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="" class="blankLabel"></label>
+                    <ul class="list-inline">
+                      <li><a href="#"><img src="/assets/img/booking/master-card.jpg" alt="image"></a></li>
+                      <li><a href="#"><img src="/assets/img/booking/discover.jpg" alt="image"></a></li>
+                      <li><a href="#"><img src="/assets/img/booking/visa.jpg" alt="image"></a></li>
+                      <li><a href="#"><img src="/assets/img/booking/paypal.jpg" alt="image"></a></li>
+                    </ul>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="" class="blankLabel">Fecha de Expiracion</label>
+                    <div class="bookingDrop">
+                      <select name="guiest_id3" id="guiest_id3" class="select-drop">
+                        <option value="0">Mes</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for=""></label>
+                    <div class="bookingDrop">
+                      <select name="guiest_id3" id="guiest_id3" class="select-drop">
+                        <option value="0">Año</option>
+                        <option value="1">2016</option>
+                        <option value="2">2017</option>
+                        <option value="3">2018</option>
+                        <option value="4">2019</option>
+                        <option value="5">2020</option>
+                        <option value="6">2021</option>
+                        <option value="7">2022</option>
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="buttonArea galleryBtnArea">
+                      <ul class="list-inline">
+                      	<li><a [routerLink]="['/user-panel/reservas-tours']" class="btn buttonTransparent">atras</a></li>
+                        <li class="pull-right"><a [routerLink]="['/user-panel/reservas-tours']" class="btn buttonTransparent">Pagar</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>

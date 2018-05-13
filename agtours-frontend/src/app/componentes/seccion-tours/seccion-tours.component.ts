@@ -1,15 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
+import { Tour } from "../../modelos/tour";
+import { TourService } from "../../servicios/tour.service";
+
+import { GLOBAL } from "../../servicios/global";
+
+
 
 @Component({
   selector: 'app-seccion-tours',
   templateUrl: './seccion-tours.component.html',
-  styleUrls: ['./seccion-tours.component.css']
+  providers: [TourService]
 })
+
 export class SeccionToursComponent implements OnInit {
 
-  constructor() { }
+	public tours: Tour[];
+	public url: string;
 
-  ngOnInit() {
-  }
+	constructor(
+		private _tourService: TourService
+	) { 
+		this.url = GLOBAL.url;
+	}
 
+	ngOnInit() {
+		console.log('Componente de tours cargado');
+		this.getTours();
+	}
+
+	getTours(){
+		this._tourService.getTours().subscribe(
+			response => {
+				if (!response.tours) {
+					
+				} else {
+					this.tours = response.tours;
+				}
+			},
+			error => {
+				console.log(<any>error);
+			}
+		);
+	}
 }

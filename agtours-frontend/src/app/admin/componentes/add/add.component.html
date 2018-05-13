@@ -1,0 +1,66 @@
+            <div class="infoTitle">
+              <h2>{{ title }}</h2>
+            </div>
+
+<!--             <div class="alert alert-success" *ngIf="status == 'success'">
+              Registro realizado correctamente
+            </div>
+
+            <div class="alert alert-danger" *ngIf="status == 'error'">
+              No se ha realizado el registro correctamente
+            </div> -->
+
+            <div class="bookingForm">
+              <form #registroTourForm="ngForm" (ngSubmit)="onSubmit();" class="form">
+                <div class="row">
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Nombre del Tour</label>
+                    <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="tour.nombre" required>
+                    <span *ngIf="!nombre.valid && nombre.touched">El nombre es obligatorio</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Dias del tour</label>
+                    <input type="number" class="form-control" name="diastour" #diastour="ngModel" [(ngModel)]="tour.diastour" required>
+                    <span *ngIf="!diastour.valid && diastour.touched">Los dias del Tour son obligatorios</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Fecha de Inicio</label>
+                    <input type="date" class="form-control" name="fechainicio" #fechainicio="ngModel" [(ngModel)]="tour.fechainicio" required>
+                    <span *ngIf="!fechainicio.valid && fechainicio.touched">La fecha de inicio es obligatoria</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Fecha de Fin</label>
+                    <input type="date" class="form-control" name="fechafin" #fechafin="ngModel" [(ngModel)]="tour.fechafin" required>
+                    <span *ngIf="!fechafin.valid && fechafin.touched">La fecha de fin es obligatoria</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Precio</label>
+                    <input type="text" class="form-control" name="precio" #precio="ngModel" [(ngModel)]="tour.precio" required>
+                    <span *ngIf="!precio.valid && precio.touched">El precio es obligatorio</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Descuento</label>
+                    <input type="text" class="form-control" name="descuento" #descuento="ngModel" [(ngModel)]="tour.descuento" required>
+                    <span *ngIf="!descuento.valid && descuento.touched">El descuento es obligatorio</span>
+                  </div>
+                  <div class="form-group col-xs-12">
+                    <label for="">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" #descripcion="ngModel" [(ngModel)]="tour.descripcion"></textarea>
+                    <span *ngIf="!descripcion.valid && descripcion.touched">La descripcion es obligatoria</span>
+                  </div>
+                  <div class="form-group col-xs-12">
+                    <label for="">Imagen del Tour</label>
+                    <input type="file" class="form-control" placeholder="Subir imagen..." (change)="fileChangeEvent($event)">
+                  </div>                  
+                  <div class="col-xs-12">
+                    <button [disabled]="!registroTourForm.form.valid" class="btn buttonTransparent" type="submit">Guardar Tour</button>
+<!--                     <div class="buttonArea galleryBtnArea">
+                      <ul class="list-inline">
+                        <li><a href="#" class="btn buttonTransparent">limpiar campos</a></li>
+                        <li class="pull-right"><a href="booking-2.html" class="btn buttonTransparent">Guardar</a></li>
+                      </ul>
+                    </div> -->
+                  </div>
+                </div>
+              </form>
+            </div>

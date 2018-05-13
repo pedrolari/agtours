@@ -10,13 +10,14 @@ var Schema = mongoose.Schema;
 var TourSchema = Schema({
 	nombre: String,
 	descripcion: String,
-	fecha_inicio: Date,
-	fecha_fin: Date,
-	dias_tour: Number,
+	fechainicio: Date,
+	fechafin: Date,
+	diastour: Number,
 	precio: Number,
 	descuento: Number,
-	categoria: String,
-	ciudad: { type: Schema.ObjectId, ref: 'ciudad' }
+	image: String,
+	user: { type: Schema.ObjectId, ref: 'User' }
+
 });
 
 // Exportamos el modulo

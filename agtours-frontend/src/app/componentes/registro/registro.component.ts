@@ -4,6 +4,8 @@ import { Usuario } from "../../modelos/usuario";
 import { GLOBAL } from "../../servicios/global";
 import { UsuariosService } from "../../servicios/usuarios.service";
 
+import {ViewChild, ElementRef} from '@angular/core';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -15,6 +17,8 @@ export class RegistroComponent implements OnInit {
 	public usuario: Usuario;
 	public status: string;
 
+	@ViewChild('closeBtn') closeBtn: ElementRef;
+
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
@@ -24,7 +28,7 @@ export class RegistroComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log('Componente registro cargado!!!!!');
+		// console.log('Componente registro cargado!!!!!');
 	}
 
 	onSubmit(){
@@ -34,6 +38,7 @@ export class RegistroComponent implements OnInit {
 					this.status = 'success';
 					this._router.navigate(['/usuarios']);
 					this.usuario = new Usuario('', '', '', '', '', '', '', '', 'ROLE_USER', '');
+					this.closeModal();
 				} else {
 					this.status = 'error';
 				}
@@ -43,4 +48,9 @@ export class RegistroComponent implements OnInit {
 			}
 		);
 	}
+
+	//call this wherever you want to close modal
+    private closeModal(): void {
+        this.closeBtn.nativeElement.click();
+    }	
 }

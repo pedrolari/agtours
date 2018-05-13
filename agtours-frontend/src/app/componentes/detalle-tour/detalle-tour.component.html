@@ -1,0 +1,182 @@
+	<div *ngIf="tour">
+		<!-- PAGE TITLE -->
+    <!-- <section class="pageTitle" style="background-image:url(/assets/img/pages/page-title-bg13.jpg);"> -->
+    	<section class="pageTitle" style="background-image:url(/assets/img/pages/page-title-bg13.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="titleTable">
+              <div class="titleTableInner">
+                <div class="pageTitleInfo">
+                  <h1>{{ tour.nombre }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE CONTENT -->
+    <section class="mainContentSection singlePackage">
+      <div class="container">
+        <div class="row ">
+          <div class="col-sm-8 col-xs-12 col-sm-push-4">
+            <div class="row">
+              <div class="col-xs-12" *ngIf="tour.image && tour.image != 'null'">
+                <div id="package-carousel" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#package-carousel" data-slide-to="0" class=""></li>
+                    <li data-target="#package-carousel" data-slide-to="1" class=""></li>
+                    <li data-target="#package-carousel" data-slide-to="2" class="active"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img alt="Second slide" src="{{ url + 'get-image-tour/' + tour.image }}">
+                    </div>
+                    <div class="item ">
+                      <img alt="Third slide" src="{{ url + 'get-image-tour/' + tour.image }}">
+                    </div>
+                    <div class="item ">
+                      <img alt="Third slide" src="{{ url + 'get-image-tour/' + tour.image }}">
+                    </div>
+                  </div>
+                  <a class="left carousel-control" href="#package-carousel" data-slide="prev"><span class="glyphicon glyphicon-menu-left"></span></a>
+                  <a class="right carousel-control" href="#package-carousel" data-slide="next"><span class="glyphicon glyphicon-menu-right"></span></a>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="description-aria">
+                  <div class="sectionTitle1">
+                    <h2>{{ tour.nombre }}</h2>
+                  </div>                  
+                  <div class="sectionTitle2">
+                    <h2>Descripcion</h2>
+                    <p>{{ tour.descripcion }}</p>
+                  </div>
+                  <div class="information-aria">
+                    <h3>Programa</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    <div class="singleContent">
+                      <div class="media">
+                        <div class="media-body">
+                          <h4 class="media-heading">Diario de información</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        </div>
+                        <div class="media-right">
+                          <div class="days">{{ tour.diastour}} dias</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="location-aria">
+
+                     <ul class="list-inline detailsBtn">
+                        <li><span class="btn buttonTransparent">Inicio <i class="fa fa-calendar" aria-hidden="true"></i> {{ tour.fechainicio | date : shortDate }}</span></li>
+                        <li><span class="btn buttonTransparent">Fin <i class="fa fa-calendar" aria-hidden="true"></i> {{ tour.fechafin | date : shortDate }}</span></li>
+                        <li><span class="btn buttonTransparent"><i class="fa fa-eur" aria-hidden="true"></i> {{ tour.precio }}</span></li>
+                        <li><span class="btn buttonTransparent"><i class="fa fa-percent" aria-hidden="true"></i> {{ tour.descuento }}</span></li>
+                      </ul>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+
+          <aside class="col-sm-4 col-xs-12 col-sm-pull-8">
+            <div class="singleCartSidebar">
+              <div class="panel panel-default">
+                <div class="panel-heading">Reserva Ahora</div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-12" *ngIf="identidad">
+                      <form class="form-horizontal" #bookingForm="ngForm" (ngSubmit)="addReserva();">
+                        <div class="form-group">
+                          <label class="control-label col-md-5 col-sm-12 col-xs-5" for="inputSuccess3">Selecciona una fecha:</label>
+                          <div class="col-md-7 col-sm-12 col-xs-7 datepickerWrap">
+                            <input type="date" class="form-control" name="fechainicio" #fechainicio="ngModel" [(ngModel)]="reservatour.fechainicio" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-5 col-sm-12 col-xs-4" >Adultos:</label>
+                          <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
+                            <div class="count-input" *ngIf="numAdulto>0">
+                              <a class="incr-btn" data-action="decrease" (click)="disminuirCantidad('adulto')">–</a>
+                              <input name="numAdultos" #numAdultos="ngModel" [(ngModel)]="reservatour.numAdultos" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('adulto')">+</a>
+                            </div>
+                            <div class="count-input" *ngIf="numAdulto<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numAdultos" #numAdultos="ngModel" [(ngModel)]="reservatour.numAdultos" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('adulto')">+</a>
+                            </div>                            
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-5 col-sm-12 col-xs-4">Niños:</label>
+                          <div class="col-md-5 col-sm-12 col-xs-6 datepickerWrap">
+                            <div class="count-input" *ngIf="numInfantil>0">
+                              <a class="incr-btn" data-action="decrease" (click)="disminuirCantidad('infantil')">–</a>
+                              <input name="numInfantiles" #numInfantiles="ngModel" [(ngModel)]="reservatour.numInfantiles" class="quantity" type="number" value="0" min="0">
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('infantil')">+</a>
+                            </div>
+                            <div class="count-input" *ngIf="numInfantil<=0" >
+                              <a class="incr-btn">–</a>
+                              <input name="numInfantiles" #numInfantiles="ngModel" [(ngModel)]="reservatour.numInfantiles" class="quantity" type="number" value="0" min="0" >
+                              <a class="incr-btn" data-action="increase" (click)="aumentarCantidad('infantil')">+</a>
+                            </div>                                
+                          </div>
+                        </div>
+                        <div class="totalCost">
+                          <div class="col-xs-8 totalCostLeft">
+                            <p>Precio</p>
+                          </div>
+                          <div class="col-xs-4 totalCostRight">{{ this.precioTotal }}€</div>
+                        </div>
+                        <div class="totalCost">
+                          <div class="col-xs-8 totalCostLeft">
+                            <p>Descuento </p>
+                          </div>
+                          <div class="col-xs-4 totalCostRight">{{ tour.descuento }}%</div>
+                        </div>   
+                        <div class="totalCost">
+                          <div class="col-xs-8 totalCostLeft">
+                            <p>Total </p>
+                          </div>
+                          <div class="col-xs-4 totalCostRight">{{ this.precioTotal - this.precioTotalDescuento }}€</div>
+                        </div>                                              
+                        <div class="col-sm-12" *ngIf="identidad && identidad.role == 'ROLE_USER'">
+                          <!-- <a [disabled]="!bookingForm.form.valid" class="btn btn-block buttonTransparent" (click)="hacerReserva()">Haz tu reserva <i class="fa fa-angle-right" aria-hidden="true"></i></a> -->
+                          <button [disabled]="!bookingForm.form.valid" class="btn buttonTransparent" type="submit">Haz tu reserva</button>
+                        </div>
+                        <div class="col-sm-12" *ngIf="!identidad || identidad.role != 'ROLE_USER'">
+                          <a class="btn btn-block buttonTransparent" disabled>Eres Admin</a>
+                        </div>                        
+                      </form>
+                    </div>
+                    <div class="col-xs-12" *ngIf="!identidad">
+                      <div class="totalCost">
+                        <div class="col-xs-12 totalCostLeft">
+                          <p>DEBES ACCEDER A TU CUENTA PARA PODER RESERVAR</p>
+                        </div>
+                      </div>  
+                      <div class="totalCost">
+                        <div class="col-xs-12 totalCostRight">Acceder</div>
+                      </div>                                             
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="alert alert-success" *ngIf="status == 'success'">
+                Reserva realizada correctamente
+              </div>
+              <div class="alert alert-danger" *ngIf="status == 'error'">
+                No se ha realizado la reserva
+              </div>
+            </div>
+          </aside>          
+        </div>
+      </div>
+    </section>
+	</div>	    

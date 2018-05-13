@@ -19,8 +19,15 @@ var multipart = require('connect-multiparty');
 var md_upload = multipart({ uploadDir: './uploads/tours' });
 
 // Creamos nuestras rutas. Primer parametro la ruta y el segundo, el metodo del controlador que queramos usar
-api.get('/pruebastours', md_auth.ensureAuth, TourController.pruebas);
+api.get('/pruebas-tours', md_auth.ensureAuth, TourController.pruebas);
 api.post('/tour', md_auth.ensureAuth, TourController.saveTour);
+api.get('/tours', TourController.getTours);
+api.get('/tour/:id', TourController.getTour);
+api.put('/tour/:id', md_auth.ensureAuth, TourController.updatedTour);
+api.post('/upload-image-tour/:id', [md_auth.ensureAuth, md_upload], TourController.uploadImage);
+api.get('/get-image-tour/:imageFile', TourController.getImageFile);
+api.delete('/tour/:id', md_auth.ensureAuth, TourController.deleteTour);
+
 
 // Exportamos el modulo
 module.exports = api;

@@ -1,0 +1,68 @@
+            <div class="infoTitle">
+              <h2>{{ title }}</h2>
+            </div>
+
+            <div class="alert alert-success" *ngIf="status == 'success'">
+              Registro realizado correctamente
+            </div>
+
+            <div class="alert alert-danger" *ngIf="status == 'error'">
+              No se ha realizado el registro correctamente
+            </div>
+
+            <div class="bookingForm">
+              <form #editarHotelForm="ngForm" (ngSubmit)="onSubmit();" class="form">
+                <div class="row">
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Nombre del Hotel</label>
+                    <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="hotel.nombre" required>
+                    <span *ngIf="!nombre.valid && nombre.touched">El nombre es obligatorio</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Categoria</label>
+                    <input type="number" class="form-control" name="categoria" #categoria="ngModel" [(ngModel)]="hotel.categoria" min="1" max="5" required>
+                    <span *ngIf="!categoria.valid && categoria.touched">La categoria del hotel es obligatoria</span>
+                  </div>
+                 
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Precio Habitacion Simple</label>
+                    <input type="number" class="form-control" name="preciosimple" #preciosimple="ngModel" [(ngModel)]="hotel.preciosimple" required>
+                    <span *ngIf="!preciosimple.valid && preciosimple.touched">El precio simple es obligatorio</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Precio Habitacion Doble</label>
+                    <input type="number" class="form-control" name="preciodoble" #preciodoble="ngModel" [(ngModel)]="hotel.preciodoble" required>
+                    <span *ngIf="!preciodoble.valid && preciodoble.touched">El precio doble es obligatorio</span>
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Numero de habitaciones</label>
+                    <input type="number" class="form-control" name="numhabitaciones" #numhabitaciones="ngModel" [(ngModel)]="hotel.numhabitaciones" required>
+                    <span *ngIf="!numhabitaciones.valid && numhabitaciones.touched">El numeros de habitaciones del hotel es obligatorio</span>
+                  </div> 
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Extras</label>
+                    <input type="text" class="form-control" name="extras" #extras="ngModel" [(ngModel)]="hotel.extras">
+                  </div>
+                  <div class="form-group col-sm-6 col-xs-12">
+                    <label for="">Descuento</label>
+                    <input type="number" class="form-control" name="descuento" #descuento="ngModel" [(ngModel)]="hotel.descuento" min="0" max="100" required>
+                    <span *ngIf="!descuento.valid && descuento.touched">El descuento es obligatorio</span>
+                  </div>
+                  <div class="form-group col-xs-12">
+                    <label for="">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" #descripcion="ngModel" [(ngModel)]="hotel.descripcion"></textarea>
+                    <span *ngIf="!descripcion.valid && descripcion.touched">La descripcion es obligatoria</span>
+                  </div>
+                  <div class="form-group col-xs-12" *ngIf="hotel.image && hotel.image != 'null'">
+                    <img src="{{ url + 'get-image-hotel/' + hotel.image }}" style="width: 60px;">
+                  </div>                  
+                  <div class="form-group col-xs-12">
+                    <label for="">Imagen del Hotel</label>
+                    <input type="file" class="form-control" placeholder="Subir imagen..." (change)="fileChangeEvent($event)">
+                  </div>                 
+                  <div class="col-xs-12">
+                    <button [disabled]="!editarHotelForm.form.valid" class="btn buttonTransparent" type="submit">Guardar Hotel</button>
+                  </div>
+                </div>
+              </form>
+            </div>

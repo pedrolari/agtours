@@ -5,6 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // import { UsuariosService } from "./servicios/usuarios.service";
 
+
+// importamos nuestros modulos
+import { AdminModule } from './admin/admin.module';
+import { UserPanelModule } from './userpanel/userpanel.module';
+
+// importamos nuestros componentes
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -29,6 +35,8 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ListadoUsuariosComponent } from './listado-usuarios/listado-usuarios.component';
 import { RegistroUltimoComponent } from './registro/registroultimo.component';
 import { UserEditComponent } from './componentes/user-edit/user-edit.component';
+import { DetalleTourComponent } from './componentes/detalle-tour/detalle-tour.component';
+import { DetalleHotelComponent } from './componentes/detalle-hotel/detalle-hotel.component';
 
 
 @NgModule({
@@ -56,13 +64,17 @@ import { UserEditComponent } from './componentes/user-edit/user-edit.component';
     GaleriaComponent,
     ListadoUsuariosComponent,
     RegistroUltimoComponent,
-    UserEditComponent
+    UserEditComponent,
+    DetalleTourComponent,
+    DetalleHotelComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing 
+    routing,
+    AdminModule,
+    UserPanelModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
