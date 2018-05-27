@@ -165,8 +165,8 @@
 							<td class="bookingTd">
 						        <ul class="list-inline listingsInfo text-left">
 									<li>
-	                                    <a [routerLink]="['/user-panel/detalle-reserva', reserva._id]"><h4><span class="glyphicon glyphicon-eye-open"></span> VER</h4></a><br>
-							            <a href="/user-panel/reservas-tours" (click)="deleteReservaTour(reserva._id)"><h4><span class="glyphicon glyphicon-trash"></span> CANCELAR</h4></a>
+	                                    <a [routerLink]="['/admin-panel/detalle-reserva-tour', reserva._id]"><h4><span class="glyphicon glyphicon-eye-open"></span> VER</h4></a><br>
+							            <a href="/admin-panel/listado-reservas" (click)="deleteReservaTour(reserva._id)"><h4><span class="glyphicon glyphicon-trash"></span> CANCELAR</h4></a>
 									</li>
 								</ul>
 							</td>						
@@ -222,8 +222,8 @@
 							<td class="bookingTd">
 						        <ul class="list-inline listingsInfo text-left">
 									<li>
-	                                    <a [routerLink]="['/user-panel/detalle-reserva-hotel', reserva._id]"><h4><span class="glyphicon glyphicon-eye-open"></span> VER</h4></a><br>
-							            <a href="/user-panel/reservas-hoteles" (click)="deleteReservaHotel(reserva._id)"><h4><span class="glyphicon glyphicon-trash"></span> CANCELAR</h4></a>
+	                                    <a [routerLink]="['/admin-panel/detalle-reserva-hotel', reserva._id]"><h4><span class="glyphicon glyphicon-eye-open"></span> VER</h4></a><br>
+							            <a href="/admin-panel/listado-reservas" (click)="deleteReservaHotel(reserva._id)"><h4><span class="glyphicon glyphicon-trash"></span> CANCELAR</h4></a>
 									</li>
 								</ul>
 							</td>						
